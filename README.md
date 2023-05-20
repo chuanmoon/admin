@@ -16,7 +16,7 @@ max_cron_threads = 2
 
 # online
 ``` shell
-docker run -v /data/docker/chuanmoon/conf/:/etc/odoo/ \
+docker run -v /etc/chuanmoon/:/etc/odoo/ \
 -v /data/docker/chuanmoon/addons:/mnt/extra-addons/ \
 -v /data/docker/chuanmoon/log/:/var/log/odoo/ \
 -v /data/docker/chuanmoon/odoo:/var/lib/odoo/ \
@@ -28,7 +28,7 @@ docker run -v /data/docker/chuanmoon/conf/:/etc/odoo/ \
 
 ``` shell
 docker run \
--v //d/workspace/chuanmoon/admin/conf/:/etc/odoo/ \
+-v //d/etc/chuanmoon/:/etc/odoo/ \
 -v //d/workspace/chuanmoon/admin/addons/:/mnt/extra-addons/ \
 -p 8069:8069 \
 --name odoo_chuanmoon -t odoo:14
@@ -37,7 +37,7 @@ docker run \
 ## macos
 
 ``` shell
-docker run -v /data/workspace/chuanmoon/admin/conf/:/etc/odoo/ \
+docker run -v /etc/chuanmoon/:/etc/odoo/ \
 -v /data/workspace/chuanmoon/admin/addons:/mnt/extra-addons/ \
 -v /data/workspace/chuanmoon/admin/log/:/var/log/odoo/ \
 -v /data/workspace/chuanmoon/admin/odoo:/var/lib/odoo/ \
