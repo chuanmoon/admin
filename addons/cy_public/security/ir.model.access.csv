@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_group_cy_lang_sys_manager,cy_lang,model_cy_lang,sys_manager,1,1,1,0
+access_group_cy_currency_sys_manager,cy_currency,model_cy_currency,sys_manager,1,1,1,0

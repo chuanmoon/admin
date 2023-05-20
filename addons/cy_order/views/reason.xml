@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<!-- cy.order.cancel.reason form view -->
+		<record id="cy_order_cancel_reason_view_form" model="ir.ui.view">
+			<field name="name">cy.order.cancel.reason.view.form</field>
+			<field name="model">cy.order.cancel.reason</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<sheet>
+						<group>
+							<!-- Add your fields here -->
+							<field name="id" />
+							<field name="reason" />
+							<field name="sequence" />
+							<field name="active" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- cy.order.cancel.reason tree view -->
+		<record id="cy_order_cancel_reason_view_tree" model="ir.ui.view">
+			<field name="name">cy.order.cancel.reason.view.tree</field>
+			<field name="model">cy.order.cancel.reason</field>
+			<field name="arch" type="xml">
+				<tree multi_edit="1">
+					<!-- Add your fields here -->
+					<field name="id" />
+					<field name="reason" />
+					<field name="sequence" />
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+		<!-- cy.order.cancel.reason action window -->
+		<record id="cy_order_cancel_reason_action" model="ir.actions.act_window">
+			<field name="name">取消订原因</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cy.order.cancel.reason</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

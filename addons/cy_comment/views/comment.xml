@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+
+		<!-- cy.product.comment tree view -->
+		<record id="cy_product_comment_view_tree" model="ir.ui.view">
+			<field name="name">cy.product.comment.view.tree</field>
+			<field name="model">cy.product.comment</field>
+			<field name="arch" type="xml">
+				<tree multi_edit="1">
+					<!-- Add your fields here -->
+					<field name="id" />
+					<field name="create_date"/>
+					<field name="order_id" readonly="1" />
+					<field name="active" widget="boolean_toggle" />
+					<field name="spu_id" readonly="1" />
+					<field name="skc_id" readonly="1" />
+					<field name="sku_id" readonly="1" />
+					<field name="size_name" />
+					<field name="color_name" />
+					<field name="user_id" readonly="1" />
+					<field name="user_name" readonly="1" />
+					<field name="score" readonly="1" />
+					<field name="image_urls" widget="cy_images_field" readonly="1" />
+					<field name="content" readonly="1" />
+					<field name="fit_level" readonly="1" />
+					<field name="order_type" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="cy_product_comment_view_form" model="ir.ui.view">
+			<field name="name">cy.product.comment.view.form</field>
+			<field name="model">cy.product.comment</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<sheet>
+						<group>
+							<field name="statics_id" />
+							<field name="order_id" />
+							<field name="sku_id" />
+							<field name="user_id" />
+							<field name="score" />
+							<field name="size_name" />
+							<field name="color_name" />
+							<field name="active" widget="boolean_toggle" />
+							<field name="image_urls" widget="cy_images_field" />
+							<field name="content" />
+							<field name="fit_level" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- cy.product.comment search view -->
+		<record id="cy_product_comment_view_search" model="ir.ui.view">
+			<field name="name">cy.product.comment.view.search</field>
+			<field name="model">cy.product.comment</field>
+			<field name="arch" type="xml">
+				<search string="">
+					<!-- Add your fields here -->
+					<field name="skc_id" />
+					<field name="sku_id" />
+					<field name="order_id" />
+					<field name="user_id" />
+					<field name="user_name" />
+				</search>
+			</field>
+		</record>
+		<!-- cy.product.comment action window -->
+		<record id="comment_page_action" model="ir.actions.act_window">
+			<field name="name">评价管理</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cy.product.comment</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

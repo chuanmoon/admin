@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="cy_public_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/cy_public/static/src/css/public.css" />
+                <link rel="stylesheet" href="/cy_public/static/src/css/qbuilder.css" />
+                <link rel="stylesheet" href="/cy_public/static/src/css/pagination.css" />
+                <!-- <script type="text/javascript" src="/cy_public/static/src/js/ajaxfileupload.js" /> -->
+                <script type="text/javascript" src="/cy_public/static/src/js/category-selector.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/plupload.full.min.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/qiniu.min.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/widgets.js" />
+                <script type="text/javascript" src="/cy_public/static/src/js/dot.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/sql-parser.min.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/jquery-extendext.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/qbuilder.js"></script>
+                <script type="text/javascript" src="/cy_public/static/src/js/pagination.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

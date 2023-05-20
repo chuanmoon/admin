@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 国家 -->
+        <record id="view_country_form" model="ir.ui.view">
+            <field name="name">cy.country.form</field>
+            <field name="model">cy.country</field>
+            <field name="arch" type="xml">
+                <form string="国家">
+                    <sheet>
+                        <div class="pull-right">
+                            <span style="font-size:12px;color:#bf7e1a;" class="oe_read_only">修改在2小时内自动生效，加急请点击 >></span>
+                            <button name="apply_now" type="object" confirm="数据将在1秒后生效！" string="立即生效" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                        </div>
+                        <group>
+                            <field name="region_id" />
+                            <field name="code" />
+                            <field name="phone_len" />
+                            <field name="phone_code" />
+                            <field name="time_zone" />
+                            <field name="currency_code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_country_tree" model="ir.ui.view">
+            <field name="name">cy.country.form</field>
+            <field name="model">cy.country</field>
+            <field name="arch" type="xml">
+                <tree string="国家">
+                    <field name="region_id" />
+                    <field name="code" />
+                    <field name="phone_len" />
+                    <field name="phone_code" />
+                    <field name="time_zone" />
+                    <field name="currency_code" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_country_filter" model="ir.ui.view">
+            <field name="name">cy.country.filter</field>
+            <field name="model">cy.country</field>
+            <field name="arch" type="xml">
+                <search string="国家">
+                    <field name="region_id" />
+                    <field name="code" />
+                    <field name="phone_len" />
+                    <field name="phone_code" />
+                    <field name="time_zone" />
+                </search>
+            </field>
+        </record>
+        <record id="action_country" model="ir.actions.act_window">
+            <field name="name">国家</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.country</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_country_filter" />
+        </record>
+        <!--end 国家 -->
+    </data>
+</odoo>

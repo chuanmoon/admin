@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- category -->
+        <record model="ir.module.category" id="cy_mall">
+            <field name="name">川月商城</field>
+            <field name="description">川月商城</field>
+            <field name="sequence">11</field>
+        </record>
+
+        <!-- groups -->
+        <record model="res.groups" id="sys_manager">
+            <field name="name">系统配置</field>
+            <field name="category_id" ref="cy_mall" />
+        </record>
+    </data>
+</openerp>

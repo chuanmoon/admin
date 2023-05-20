@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--start 系统配置 -->
+        <record id="view_cy_setting_form" model="ir.ui.view">
+            <field name="name">cy.setting.form</field>
+            <field name="model">cy.setting</field>
+            <field name="arch" type="xml">
+                <form string="系统配置">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="code" />
+                            </group>
+                            <group>
+                                <field name="property_type" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="text_value" attrs="{'invisible': [('property_type', '!=', 'text')]}" />
+                            <field name="image_value" attrs="{'invisible': [('property_type', '!=', 'image')]}" widget="cy_images_field" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_cy_setting_tree" model="ir.ui.view">
+            <field name="name">cy.setting.tree</field>
+            <field name="model">cy.setting</field>
+            <field name="arch" type="xml">
+                <tree string="系统配置">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="property_type" />
+                    <field name="value" options="{'qiniu_images_text':'property_type==1'}" widget="qiniu_images_field" />
+                    <field name="create_date" string="创建时间" />
+                    <field name="write_date" string="更新时间" />
+                    <field name="create_uid" string="创建者" />
+                    <field name="write_uid" string="更新者" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_cy_setting_filter" model="ir.ui.view">
+            <field name="name">cy.setting.filter</field>
+            <field name="model">cy.setting</field>
+            <field name="arch" type="xml">
+                <search string="系统配置">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="value" />
+                </search>
+            </field>
+        </record>
+        <record id="action_setting" model="ir.actions.act_window">
+            <field name="name">系统配置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.setting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_cy_setting_filter" />
+        </record>
+        <!--end 系统配置 -->
+        <record model="cy.setting" id="register_page_tips_image">
+            <field name="name">注册页促销提示</field>
+            <field name="code">register_page_tips_image</field>
+            <field name="property_type">image</field>
+        </record>
+        <record model="cy.setting" id="terms_and_conditions_link">
+            <field name="name">条款和条件</field>
+            <field name="code">terms_and_conditions_link</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="mate_data_title">
+            <field name="name">网站title</field>
+            <field name="code">mate_data_title</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="mate_data_keywords">
+            <field name="name">网站keywords</field>
+            <field name="code">mate_data_keywords</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="mate_data_description">
+            <field name="name">网站description</field>
+            <field name="code">mate_data_description</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="customer_service_link">
+            <field name="name">客服链接</field>
+            <field name="code">customer_service_link</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="shipping_info_title">
+            <field name="name">配送信息标题</field>
+            <field name="code">shipping_info_title</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="shipping_info_url">
+            <field name="name">配送信息URL</field>
+            <field name="code">shipping_info_url</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="refund_policy_title">
+            <field name="name">退货协议标题</field>
+            <field name="code">refund_policy_title</field>
+            <field name="property_type">text</field>
+        </record>
+        <record model="cy.setting" id="refund_policy_url">
+            <field name="name">退货协议URL</field>
+            <field name="code">refund_policy_url</field>
+            <field name="property_type">text</field>
+        </record>
+
+        <record model="cy.setting" id="privacy_policy_link">
+            <field name="name">隐私政策链接</field>
+            <field name="code">privacy_policy_link</field>
+            <field name="property_type">text</field>
+        </record>
+    </data>
+</openerp>

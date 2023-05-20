@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<!-- cy.product.search.recommend form view -->
+		<record id="cy_product_search_recommend_view_form" model="ir.ui.view">
+			<field name="name">cy.product.search.recommend.view.form</field>
+			<field name="model">cy.product.search.recommend</field>
+			<field name="arch" type="xml">
+				<form string="搜索推荐">
+					<sheet>
+						<group>
+							<!-- Add your fields here -->
+							<field name="name" />
+							<field name="header_image" widget="cy_image_field"/>
+							<field name="display_name" />
+							<field name="is_show" />
+							<field name="action_id" />
+						</group>
+					</sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+				</form>
+			</field>
+		</record>
+		<!-- cy.product.search.recommend tree view -->
+		<record id="cy_product_search_recommend_view_tree" model="ir.ui.view">
+			<field name="name">cy.product.search.recommend.view.tree</field>
+			<field name="model">cy.product.search.recommend</field>
+			<field name="arch" type="xml">
+				<tree string="搜索推荐">
+					<!-- Add your fields here -->
+					<field name="sequence" widget="handle"/>
+					<field name="id" />
+					<field name="header_image" widget="cy_image_field"/>
+					<field name="name" />
+					<field name="display_name" />
+					<field name="is_show" />
+					<field name="action_id" />
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- cy.product.search.recommend action window -->
+		<record id="cy_product_search_recommend_action" model="ir.actions.act_window">
+			<field name="name">搜索推荐</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cy.product.search.recommend</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

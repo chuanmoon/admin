@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 促销规则 -->
+        <record id="view_promotion_form" model="ir.ui.view">
+            <field name="name">cy.promotion.form</field>
+            <field name="model">cy.promotion</field>
+            <field name="arch" type="xml">
+                <form string="促销规则">
+                    <sheet>
+                        <div class="pull-right">
+                            <span style="font-size:12px;color:#bf7e1a;" class="oe_read_only">修改在2小时内自动生效，加急请点击 >></span>
+                            <button name="apply_now" type="object" confirm="规则将在1秒后生效！" string="立即生效" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="user_groups" widget="many2many_tags" options="{'no_create':True,'no_create_edit':True,'no_open':True}" />
+                                <!-- <field name="mark_text" /> -->
+                                <field name="start_time" />
+                                <field name="end_time" />
+                                <field name="is_can_step" />
+                                <!-- <field name="is_auto_apply" /> -->
+                                <field name="state" />
+                                <field name="active" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="promotion_type" />
+                                <field name="amount" attrs="{'invisible': [
+                                ('promotion_type', '!=', 'order_amount_discount_amount'),
+                                ('promotion_type', '!=', 'order_amount_discount_rate'),
+                                ('promotion_type', '!=', 'product_amount_discount_amount'),
+                                ('promotion_type', '!=', 'product_amount_discount_rate'),
+                                ('promotion_type', '!=', 'order_amount_free_shipping')
+                            ]}"/>
+                                <field name="qty" attrs="{'invisible': [
+                                ('promotion_type', '!=', 'order_qty_discount_amount'),
+                                ('promotion_type', '!=', 'order_qty_discount_rate'),
+                                ('promotion_type', '!=', 'product_qty_discount_amount'),
+                                ('promotion_type', '!=', 'product_qty_discount_rate'),
+                                ('promotion_type', '!=', 'product_qty_discount_to_amount')
+                            ]}"/>
+                                <field name="condition_id" attrs="{'invisible': [
+                                ('promotion_type', '!=', 'product_amount_discount_amount'),
+                                ('promotion_type', '!=', 'product_amount_discount_rate'),
+                                ('promotion_type', '!=', 'product_qty_discount_amount'),
+                                ('promotion_type', '!=', 'product_qty_discount_rate'),
+                                ('promotion_type', '!=', 'product_qty_discount_to_amount')
+                            ]}"/>
+                                <field name="discount_amount" attrs="{'invisible': [
+                                ('promotion_type', '!=', 'order_amount_discount_amount'),
+                                ('promotion_type', '!=', 'order_qty_discount_amount'),
+                                ('promotion_type', '!=', 'product_amount_discount_amount'),
+                                ('promotion_type', '!=', 'product_qty_discount_amount'),
+                                ('promotion_type', '!=', 'product_qty_discount_to_amount')
+                            ]}"/>
+                                <field name="discount_rate" min="1" max="100" attrs="{'invisible': [
+                                ('promotion_type', '!=', 'order_amount_discount_rate'),
+                                ('promotion_type', '!=', 'order_qty_discount_rate'),
+                                ('promotion_type', '!=', 'product_amount_discount_rate'),
+                                ('promotion_type', '!=', 'product_qty_discount_rate')
+                            ]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_promotion_tree" model="ir.ui.view">
+            <field name="name">cy.promotion.form</field>
+            <field name="model">cy.promotion</field>
+            <field name="arch" type="xml">
+                <tree string="促销规则">
+                    <field name="state" />
+                    <field name="name" />
+                    <field name="user_groups" widget="many2many_tags" />
+                    <!-- <field name="mark_text" /> -->
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <field name="is_can_step" />
+                    <field name="promotion_type" />
+                    <field name="amount" />
+                    <field name="qty" />
+                    <field name="condition_id" />
+                    <field name="discount_amount" />
+                    <field name="discount_rate" />
+                    <field name="is_auto_apply" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_promotion_filter" model="ir.ui.view">
+            <field name="name">cy.promotion.filter</field>
+            <field name="model">cy.promotion</field>
+            <field name="arch" type="xml">
+                <search string="促销规则">
+                    <field name="name" />
+                    <!-- <field name="mark_text" /> -->
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <field name="is_can_step" />
+                    <field name="promotion_type" />
+                    <field name="amount" />
+                    <field name="qty" />
+                    <field name="condition_id" />
+                    <field name="discount_amount" />
+                    <field name="discount_rate" />
+                    <field name="is_auto_apply" />
+                    <filter string="不可用" name="no_active" domain="[('active','=', False)]"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_promotion" model="ir.actions.act_window">
+            <field name="name">促销规则配置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.promotion</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_promotion_filter" />
+        </record>
+        <!--end 促销规则 -->
+    </data>
+</odoo>

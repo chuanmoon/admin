@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<record id="cy_order_view_form" model="ir.ui.view">
+			<field name="name">cy.order.view.form</field>
+			<field name="model">cy.order</field>
+			<field name="arch" type="xml">
+				<form string="订单管理">
+					<sheet>
+						<group>
+							<group>
+								<field name="order_no" />
+								<field name="user_id" />
+
+								<field name="shipping_method" />
+								<field name="shipping_method_id" />
+
+								<field name="currency" />
+								<field name="from_usd_rate" />
+								<field name="from_platform" />
+							</group>
+							<group>
+								<field name="usd_shipping_fee" />
+								<field name="usd_subtotal_fee" />
+								<field name="usd_market_subtotal_fee" />
+								<field name="usd_insured_fee" />
+								<field name="usd_promotion_deduct" />
+								<field name="usd_payment_deduct" />
+							</group>
+
+							<group>
+								<field name="currency_shipping_fee" />
+								<field name="currency_subtotal_fee" />
+								<field name="currency_market_subtotal_fee" />
+								<field name="currency_insured_fee" />
+								<field name="currency_promotion_deduct" />
+								<field name="currency_payment_deduct" />
+							</group>
+							<group>
+								<field name="payment_channel" />
+								<field name="pay_date" />
+								<field name="shipping_date" />
+								<field name="received_date" />
+								<field name="status" />
+								<field name="is_commented" />
+								<field name="is_delete" />
+								<field name="create_date" />
+								<field name="cancel_reason" />
+							</group>
+						</group>
+						<notebook>
+							<page name="address" string="地址">
+								<field name="address">
+									<form>
+										<group>
+											<field name="first_name" />
+											<field name="last_name" />
+											<field name="phone_number" />
+											<field name="address_line1" />
+											<field name="address_line2" />
+											<field name="post_code" />
+											<field name="tax_number" />
+											<field name="country" />
+											<field name="state" />
+											<field name="city" />
+											<field name="country_region_id" />
+											<field name="state_region_id" />
+											<field name="city_region_id" />
+											<field name="address_type" />
+										</group>
+									</form>
+									<tree>
+										<field name="first_name" />
+										<field name="last_name" />
+										<field name="phone_number" />
+										<field name="address_line1" />
+										<field name="address_line2" />
+										<field name="post_code" />
+										<field name="tax_number" />
+										<field name="country" />
+										<field name="state" />
+										<field name="city" />
+										<field name="country_region_id" />
+										<field name="state_region_id" />
+										<field name="city_region_id" />
+										<field name="address_type" />
+									</tree>
+								</field>
+							</page>
+							<page string="商品" name="商品">
+								<field name="items">
+									<form>
+										<group>
+											<group>
+												<field name="product_name" />
+												<field name="skc_sn" />
+												<field name="product_img" widget="cy_image_field" />
+												<field name="product_color" />
+												<field name="product_size" />
+												<field name="flashsale_id" />
+											</group>
+											<group>
+												<field name="usd_market_price" />
+												<field name="usd_shop_price" />
+												<field name="usd_total_promotion_deduct" />
+											</group>
+											<group>
+												<field name="market_price" />
+												<field name="shop_price" />
+												<field name="total_promotion_deduct" />
+											</group>
+										</group>
+									</form>
+									<tree>
+										<field name="product_name" />
+										<field name="skc_sn" />
+										<field name="product_img" widget="cy_image_field" />
+										<field name="product_color" />
+										<field name="product_size" />
+										<field name="flashsale_id" />
+										<field name="usd_market_price" />
+										<field name="usd_shop_price" />
+										<field name="usd_total_promotion_deduct" />
+										<field name="currency_market_price" />
+										<field name="currency_shop_price" />
+										<field name="currency_total_promotion_deduct" />
+									</tree>
+								</field>
+							</page>
+							<page name="折扣信息" string="折扣信息">
+								<field name="promotion_rules">
+									<form>
+										<group>
+											<field name="rule_id" />
+											<field name="name" />
+											<field name="usd_deduct" />
+											<field name="currency_deduct" />
+											<field name="coupon_code_id" />
+										</group>
+									</form>
+									<tree>
+										<field name="rule_id" />
+										<field name="name" />
+										<field name="usd_deduct" />
+										<field name="coupon_code_id" />
+									</tree>
+								</field>
+							</page>
+							<!-- <page string="物流信息" name="物流信息">
+								<field name="shippings">
+									<form>
+										<group>
+											<field name="delivery_num" />
+											<field name="status" />
+											<field name="product_imgs" widget="cy_images_field" />
+											<field name="last_time_line" />
+										</group>
+									</form>
+									<tree>
+										<field name="delivery_num" />
+										<field name="status" />
+										<field name="product_imgs" widget="cy_images_field" />
+										<field name="last_time_line" />
+									</tree>
+								</field>
+							</page> -->
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- cy.order tree view -->
+		<record id="cy_order_view_tree" model="ir.ui.view">
+			<field name="name">cy.order.view.tree</field>
+			<field name="model">cy.order</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="order_no" />
+					<field name="user_id" />
+
+					<field name="shipping_method" />
+					<field name="from_platform" />
+					<field name="shipping_method_id" optional="hide"/>
+
+					<field name="currency"/>
+					<field name="from_usd_rate"/>
+
+					<field name="currency_shipping_fee" />
+					<field name="currency_market_subtotal_fee" />
+					<field name="currency_subtotal_fee" />
+					<field name="currency_insured_fee" optional="hide"/>
+					<field name="currency_promotion_deduct" />
+					<field name="currency_payment_deduct" />
+
+					<field name="usd_shipping_fee" optional="hide"/>
+					<field name="usd_market_subtotal_fee" optional="hide"/>
+					<field name="usd_subtotal_fee" optional="hide"/>
+					<field name="usd_insured_fee" optional="hide"/>
+					<field name="usd_promotion_deduct" optional="hide"/>
+					<field name="usd_payment_deduct" optional="hide"/>
+
+					<field name="payment_channel" />
+					<field name="pay_date" />
+					<field name="shipping_date" />
+					<field name="received_date" />
+					<field name="status" />
+					<field name="is_delete" />
+					<field name="create_date" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="cy_order_view_search" model="ir.ui.view">
+			<field name="name">cy.order.view.search</field>
+			<field name="model">cy.order</field>
+			<field name="arch" type="xml">
+				<search string="">
+					<field name="order_no" filter_domain="[('order_no', '=', self)]" />
+					<field name="user_id" />
+					<field name="status" />
+					<field name="payment_channel" />
+				</search>
+			</field>
+		</record>
+		<!-- cy.order action window -->
+		<record id="cy_order_action" model="ir.actions.act_window">
+			<field name="name">订单信息</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cy.order</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

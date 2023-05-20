@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 页面 -->
+        <record id="view_page_form" model="ir.ui.view">
+            <field name="name">cy.page.form</field>
+            <field name="model">cy.page</field>
+            <field name="arch" type="xml">
+                <form string="页面">
+                    <sheet>
+                        <div class="pull-right">
+                            <button name="action_release_page" type="object" confirm="发布后2分钟内会对用户生效！确认发布？" string="发布当前配置" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="bg_color" widget="color" />
+                            </group>
+                            <group>
+                                <field name="active" readonly="1" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="楼层">
+                                <field name="items">
+                                    <tree>
+                                        <field name="sequence" widget="handle" />
+                                        <field name="id" />
+                                        <field name="item_type" />
+                                        <field name="images_text" widget="cy_images_field" />
+                                        <field name="images_text_pc" widget="cy_images_field" />
+                                        <field name="bg_color" widget="color" />
+                                        <field name="start_time" />
+                                        <field name="end_time" />
+                                        <field name="is_show" />
+                                        <field name="create_date" optional="hide" />
+                                        <field name="write_date" optional="hide" />
+                                        <field name="create_uid" optional="hide" />
+                                        <field name="write_uid" optional="hide" />
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="start_time" />
+                                                <field name="is_show" />
+                                                <field name="item_type" widget="radio" options="{'horizontal': true}" />
+                                                <field name="indicator_style" widget="radio" options="{'horizontal': true}" attrs="{'invisible': [('item_type', '!=', 'rotation_image')]}" />
+                                                <field name="screen_count" attrs="{'invisible': [('item_type', '!=', 'slide_image')]}" />
+                                                <field name="flash_sale_id" attrs="{'invisible': [('item_type', '!=', 'flash_sale')]}" />
+                                                <field name="condition_id" attrs="{'invisible': [('item_type', '!=', 'slide_products'),('item_type', '!=', 'column2_products')]}" />
+                                                <field name="product_count" attrs="{'invisible': [('item_type', '!=', 'slide_products'),('item_type', '!=', 'column2_products')]}" />
+                                            </group>
+                                            <group>
+                                                <field name="end_time" />
+                                                <field name="has_margin" />
+                                                <field name="bg_color" widget="color" />
+                                            </group>
+                                        </group>
+                                        <label for="images" attrs="{'invisible': [('item_type', '!=', 'rotation_image'),('item_type', '!=', 'slide_image'),('item_type', '!=', 'row_image')]}" />
+                                        <field name="images" attrs="{'invisible': [('item_type', '!=', 'rotation_image'),('item_type', '!=', 'slide_image'),('item_type', '!=', 'row_image')]}">
+                                            <tree>
+                                                <field name="sequence" widget="handle" />
+                                                <field name="id" />
+                                                <field name="image_url" widget="cy_image_field" />
+                                                <field name="image_url_pc" widget="cy_image_field" />
+                                                <field name="start_time" />
+                                                <field name="end_time" />
+                                                <field name="is_show" />
+                                                <field name="create_date" optional="hide" />
+                                                <field name="write_date" optional="hide" />
+                                                <field name="create_uid" optional="hide" />
+                                                <field name="write_uid" optional="hide" />
+                                            </tree>
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="start_time" />
+                                                        <field name="is_show" />
+                                                    </group>
+                                                    <group>
+                                                        <field name="end_time" />
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <field name="image_url" widget="cy_image_field" hotspots="True" />
+                                                    <field name="image_url_pc" widget="cy_image_field" hotspots="True" />
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="瀑布流">
+                                <field name="waterfall_tabs">
+                                    <tree>
+                                        <field name="sequence" widget="handle" />
+                                        <field name="id" />
+                                        <field name="name" />
+                                        <field name="start_time" />
+                                        <field name="end_time" />
+                                        <field name="is_show" />
+                                        <field name="condition_id" />
+                                        <field name="create_date" optional="hide" />
+                                        <field name="write_date" optional="hide" />
+                                        <field name="create_uid" optional="hide" />
+                                        <field name="write_uid" optional="hide" />
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name" />
+                                        </group>
+                                        <group>
+                                            <group>
+                                                <field name="start_time" />
+                                                <field name="is_show" />
+                                            </group>
+                                            <group>
+                                                <field name="end_time" />
+                                                <field name="condition_id" />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_page_tree" model="ir.ui.view">
+            <field name="name">cy.page.tree</field>
+            <field name="model">cy.page</field>
+            <field name="arch" type="xml">
+                <tree string="页面">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="bg_color" widget="color" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_page_filter" model="ir.ui.view">
+            <field name="name">cy.page.filter</field>
+            <field name="model">cy.page</field>
+            <field name="arch" type="xml">
+                <search string="页面">
+                    <field name="name" />
+                    <field name="bg_color" widget="color" />
+                    <filter string="不可用" name="no_active" domain="[('active','=', False)]" />
+                </search>
+            </field>
+        </record>
+        <record id="action_page" model="ir.actions.act_window">
+            <field name="name">页面</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.page</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_page_filter" />
+        </record>
+        <!--end 页面 -->
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="cy.payment.channel" id="cy_payment_channel_paypal">
+            <field name="code">paypal</field>
+        </record>
+        <record model="cy.payment.channel" id="cy_payment_channel_stripe">
+            <field name="code">stripe</field>
+        </record>
+        <record model="cy.payment.channel" id="cy_payment_channel_afterpay">
+            <field name="code">afterpay</field>
+        </record>
+    </data>
+</openerp>

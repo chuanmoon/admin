@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<!-- cy.cms.condition form view -->
+		<record id="model_name_view_form" model="ir.ui.view">
+			<field name="name">cy.cms.condition.view.form</field>
+			<field name="model">cy.cms.condition</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div class="pull-right">
+							<button name="action_release_condition" type="object" confirm="发布后2分钟内会对用户生效！确认发布？" string="发布当前配置" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+						</div>
+						<group>
+							<!-- Add your fields here -->
+							<group>
+								<field name="name" />
+								<field name="order_type"/>
+							</group>
+							<group>
+								<field name="active" readonly="1"/>
+							</group>
+						</group>
+						<notebook>
+							<page name="condition" string="表达式">
+								<field name="condition" widget="cy_query_builder" />
+							</page>
+							<page name="置顶商品货号" string="置顶商品货号">
+								<field name="top_product"/>
+							</page>
+							<page name="banner图" string="banner图">
+								<field name="banners">
+									<form>
+										<group>
+											<field name="start_time" />
+											<field name="end_time" />
+											<field name="images" widget="cy_images_field" hotspots="True"/>
+											<field name="is_show" />
+										</group>
+									</form>
+									<tree>
+										<field name="sequence" widget="handle" />
+										<field name="id" />
+										<field name="start_time" />
+										<field name="end_time" />
+										<field name="images" widget="cy_images_field" hotspots="True"/>
+										<field name="is_show" />
+									</tree>
+								</field>
+							</page>
+							<page name="商品列表" string="商品列表">
+								<field name="id" widget="cy_product_list"/>
+							</page>
+						</notebook>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+		<!-- cy.cms.condition tree view -->
+		<record id="cy_cms_condition_view_tree" model="ir.ui.view">
+			<field name="name">cy.cms.condition.view.tree</field>
+			<field name="model">cy.cms.condition</field>
+			<field name="arch" type="xml">
+				<tree>
+					<!-- Add your fields here -->
+					<field name="id" />
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_cms_condition_filter" model="ir.ui.view">
+			<field name="name">cy.cms.condition.filter</field>
+			<field name="model">cy.cms.condition</field>
+			<field name="arch" type="xml">
+				<search string="分享设置">
+					<field name="name" />
+					<filter string="不可用" name="no_active" domain="[('active','=', False)]"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="cy_cms_condition_action" model="ir.actions.act_window">
+			<field name="name">商品集合</field>
+			<field name="res_model">cy.cms.condition</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="view_cms_condition_filter" />
+		</record>
+
+		<record id="action_condition_management" model="ir.actions.client">
+			<field name="name">商品规则管理</field>
+			<field name="tag">cy.page_frame.wizard_tag</field>
+			<field name="params">{"url":"https://www.baidu.com"}</field>
+		</record>
+	</data>
+</odoo>

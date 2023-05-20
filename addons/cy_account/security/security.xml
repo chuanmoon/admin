@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="res.groups" id="account_manager">
+            <field name="name">账号管理</field>
+            <field name="category_id" ref="cy_public.cy_mall" />
+        </record>
+    </data>
+</openerp>

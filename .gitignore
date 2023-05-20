@@ -1,0 +1,7 @@
+.vscode/
+odoo/
+log/
+conf/
+addons/web_enterprise/
+*.pyc
+run.sh

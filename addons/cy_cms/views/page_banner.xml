@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="cy_cms_page_banner_view_form" model="ir.ui.view">
+        <field name="name">cy.cms.page.banner.view.form</field>
+        <field name="model">cy.cms.page.banner</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="pull-right">
+                        <button name="action_release_page" type="object" confirm="发布后2分钟内会对用户生效！确认发布？" string="发布当前配置" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                    </div>
+                    <group>
+                        <field name="name" />
+                        <field name="is_show" />
+                        <field name="pc_images" widget="cy_images_field" />
+                        <field name="m_images" widget="cy_images_field" />
+                        <field name="page_type" />
+                        <field name="param" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="cy_cms_page_banner_view_tree" model="ir.ui.view">
+        <field name="name">cy.cms.page.banner.view.tree</field>
+        <field name="model">cy.cms.page.banner</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="is_show" />
+                <field name="pc_images" widget="cy_images_field" />
+                <field name="m_images" widget="cy_images_field" />
+                <field name="page_type" />
+                <field name="param" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="cy_cms_page_banner_action" model="ir.actions.act_window">
+        <field name="name">页面顶部广告图片</field>
+        <field name="res_model">cy.cms.page.banner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

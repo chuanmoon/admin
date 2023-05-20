@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<!-- cy.product.sku form view -->
+		<record id="cy_product_sku_view_form" model="ir.ui.view">
+			<field name="name">cy.product.sku.view.form</field>
+			<field name="model">cy.product.sku</field>
+			<field name="arch" type="xml">
+				<form string="商品SKU">
+					<sheet>
+						<group>
+							<!-- Add your fields here -->
+							<field name="sku_sn" readonly="True"/>
+							<field name="skc_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
+							<field name="spu_id" readonly="True"/>
+							<field name="size_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
+							<field name="active" />
+						</group>
+						<notebook>
+							<page name="stock" string="库存">
+								<field name="stock">
+									<form>
+										<group>
+											<field name="stock" />
+										</group>
+									</form>
+									<tree>
+										<field name="stock" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+		<!-- cy.product.sku tree view -->
+		<record id="cy_product_sku_view_tree" model="ir.ui.view">
+			<field name="name">cy.product.sku.view.tree</field>
+			<field name="model">cy.product.sku</field>
+			<field name="arch" type="xml">
+				<tree>
+					<!-- Add your fields here -->
+					<field name="id" />
+					<field name="sku_sn" />
+					<field name="skc_id" />
+					<field name="spu_id" />
+					<field name="size_id" />
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="cy_product_sku_view_search" model="ir.ui.view">
+			<field name="name">cy.product.sku.view.search</field>
+			<field name="model">cy.product.sku</field>
+			<field name="arch" type="xml">
+				<search string="search">
+					<field name="id" />
+					<field name="sku_sn" />
+					<field name="skc_id" />
+					<field name="spu_id" />
+					<field name="size_id" />
+				</search>
+			</field>
+		</record>
+
+		<record id="cy_product_sku_action" model="ir.actions.act_window">
+			<field name="name">sku列表</field>
+			<field name="res_model">cy.product.sku</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"active_test":False}</field>
+		</record>
+	</data>
+</odoo>

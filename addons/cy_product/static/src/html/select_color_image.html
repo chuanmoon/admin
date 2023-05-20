@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片点选</title>
+    <style>
+        html,
+        body,
+        button {
+            padding: 0;
+            margin: 0;
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        body {
+            background-color: rgb(42, 42, 42);
+            color: #FFF;
+        }
+
+        #image_btn {
+            position: relative;
+        }
+
+        #image_mark {
+            position: absolute;
+            height: 48px;
+            width: 48px;
+            background: rgb(128 111 220 / 80%);
+            top: 0;
+            left: 0;
+            border: 2px dashed #FF0000;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex;gap: 20px;margin: 0;padding: 0;">
+        <button id="image_btn">
+            <img id="image_div" src="" />
+        </button>
+        <div>
+            请在图片上点击一下<br>
+            系统会以您点击的地方为中心，划出一个48*48像素的正方形图片<br>
+            色球图片保存到数据库
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        var params = (new URLSearchParams(window.location.search))
+        var skc_id = params.get('skc_id')
+        var image = params.get('image')
+        var host = 'https://img.your_domin.com/'
+
+        $('#image_div').attr('src', host + image + '-w480')
+        $('#image_btn').on('click', function (e) {
+            if (e.pageX > 480 - 25 || e.pageY > 640 - 25) {
+                alert('请在图片上点击，尽量靠中间一些')
+                return
+            }
+
+            if ($('#image_mark').length == 0) {
+                $('#image_btn').append('<div id="image_mark"></div>')
+            }
+            $('#image_mark').css('left', e.pageX - 25).css('top', e.pageY - 25)
+
+            $.post('/cy_product/save_select_color_image', { skc_id: skc_id, image: 'color_ball_48/' + e.pageX + '_' + e.pageY + '/' + image }, function () {
+                alert('保存成功')
+            }, 'json')
+        })
+
+        window.do_save = function(){}
+
+    </script>
+</body>
+
+</html>

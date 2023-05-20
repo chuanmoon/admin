@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<!-- cy.product.comment.statics form view -->
+		<record id="cy_product_statics_view_form" model="ir.ui.view">
+			<field name="name">cy.product.comment.statics.view.form</field>
+			<field name="model">cy.product.comment.statics</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<group>
+						<!-- Add your fields here -->
+						<group>
+							<field name="spu_id" />
+							<field name="total" />
+							<field name="star_sum" />
+						</group>
+						<group>
+							<field name="small_sum" />
+							<field name="fit_sum" />
+							<field name="big_sum" />
+						</group>
+					</group>
+					<notebook>
+						<page name="评论列表" string="评论列表">
+							<field name="comments" widget="one2many" context="{'active_test':True}">
+								<form>
+									<group>
+										<field name="order_id" />
+										<field name="sku_id" />
+										<field name="user_id" />
+										<field name="size_name" />
+										<field name="color_name" />
+										<field name="score" />
+										<field name="active" widget="boolean_toggle" />
+										<field name="image_urls" widget="cy_images_field" />
+										<field name="content" />
+										<field name="fit_level" />
+										<field name="sequence" />
+									</group>
+								</form>
+								<tree>
+									<field name="sequence" widget="cy_input" />
+									<field name="create_date" />
+									<field name="order_id" />
+									<field name="sku_id" />
+									<field name="user_id" />
+									<field name="size_name" />
+									<field name="color_name" />
+									<field name="score" />
+									<field name="active" widget="boolean_toggle" />
+									<field name="image_urls" widget="cy_images_field" />
+									<field name="content" />
+									<field name="fit_level" />
+									<field name="order_type" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+
+		<!-- cy.product.comment.statics tree view -->
+		<record id="cy_product_comment_statics_view_tree" model="ir.ui.view">
+			<field name="name">cy.product.comment.statics.view.tree</field>
+			<field name="model">cy.product.comment.statics</field>
+			<field name="arch" type="xml">
+				<tree create="false">
+					<!-- Add your fields here -->
+					<field name="spu_id" />
+					<field name="total" />
+					<field name="star_sum" />
+					<field name="small_sum" />
+					<field name="fit_sum" />
+					<field name="big_sum" />
+				</tree>
+			</field>
+		</record>
+		<!-- cy.product.comment.statics action window -->
+		<record id="cy_product_comment_statics_action" model="ir.actions.act_window">
+			<field name="name">评价管理</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cy.product.comment.statics</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

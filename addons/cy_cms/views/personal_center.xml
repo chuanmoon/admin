@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 个人中心 -->
+        <record id="view_personal_center_form" model="ir.ui.view">
+            <field name="name">cy.personal.center.form</field>
+            <field name="model">cy.personal.center</field>
+            <field name="arch" type="xml">
+                <form string="个人中心">
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="True" />
+                            <field name="top_image" widget="cy_image_field" attrs="{'invisible': [('name', '!=', '个人中心')]}"/>
+                        </group>
+                        <field name="rows">
+                            <tree>
+                                <field name="sequence" widget="handle"/>
+                                <field name="id" />
+                                <field name="icon" widget="cy_image_field"/>
+                                <field name="name" />
+                                <field name="block_no"/>
+                                <field name="action_id" />
+                                <field name="is_show" />
+                                <field name="create_date" optional="hide" />
+                                <field name="write_date" optional="hide" />
+                                <field name="create_uid" optional="hide" />
+                                <field name="write_uid" optional="hide" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="icon" widget="cy_image_field"/>
+                                    <field name="name" />
+                                    <field name="block_no" />
+                                    <field name="action_id" />
+                                    <field name="is_show" />
+                                </group>
+                            </form>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_personal_center_tree" model="ir.ui.view">
+            <field name="name">cy.personal.center.tree</field>
+            <field name="model">cy.personal.center</field>
+            <field name="arch" type="xml">
+                <tree string="个人中心">
+                    <field name="id" />
+                    <field name="name"/>
+                    <field name="top_image" widget="cy_image_field"/>
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_personal_center_filter" model="ir.ui.view">
+            <field name="name">cy.personal.center.filter</field>
+            <field name="model">cy.personal.center</field>
+            <field name="arch" type="xml">
+                <search string="个人中心">
+                </search>
+            </field>
+        </record>
+        <record id="action_personal_center" model="ir.actions.act_window">
+            <field name="name">个人中心</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.personal.center</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_personal_center_filter" />
+        </record>
+        <!--end 个人中心 -->
+        <record model="cy.personal.center" id="default_personal_center">
+            <field name="name">个人中心</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="cy.personal.center" id="personal_center_setting">
+            <field name="name">个人中心-设置页</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="cy.personal.center" id="m_bottom_company_info">
+            <field name="name">M站首页底部-COMPANY INFO</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="cy.personal.center" id="m_bottom_service_center">
+            <field name="name">M站首页底部-SERVICE CENTER</field>
+            <field name="sequence">4</field>
+        </record>
+    </data>
+</odoo>

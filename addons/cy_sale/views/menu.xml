@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_promotion" name="促销&amp;优惠券" parent="cy_public.cy_operate_menu" sequence="900" />
+        <menuitem id="menu_action_promotion" parent="cy_sale.menu_promotion" action="action_promotion" sequence="200" />
+        <menuitem id="menu_action_coupon_rule" parent="cy_sale.menu_promotion" action="action_coupon_rule" sequence="300" />
+    </data>
+</odoo>

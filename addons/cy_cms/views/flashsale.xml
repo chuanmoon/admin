@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+
+		<!-- cy.cms.flashsale form view -->
+		<record id="cy_cms_flashsale_view_form" model="ir.ui.view">
+			<field name="name">cy.cms.falshsale.view.form</field>
+			<field name="model">cy.cms.flashsale</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"></field>
+								<field name="active" readonly="1"/>
+							</group>
+							<group>
+								<field name="start_time" />
+								<field name="end_time" />
+							</group>
+						</group>
+						<notebook>
+							<page name="product" string="商品列表">
+								<button name="open_cy_cms_flashsale_add_skc_wizard_form" type="object" string="批量添加&amp;删除"/>
+								<button name="open_cy_cms_flashsale_price_wizard_form" type="object" string="批量设置价格"/>
+								<field name="skcs">
+									<form>
+										<group>
+											<group>
+												<field name="skc_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True,'no_open':True}" />
+												<field name="price" />
+												<field name="limit_qty" />
+											</group>
+											<group>
+												<field name="stock" />
+												<field name="sold_count" />
+											</group>
+										</group>
+									</form>
+									<tree editable="True">
+										<field name="sequence" widget="handle" />
+										<field name="id" />
+										<field name="skc_id" />
+										<field name="product_images" widget="cy_images_field" />
+										<field name="spu_id" />
+										<field name="shop_price" />
+										<field name="price" />
+										<field name="stock" />
+										<field name="sold_count" />
+										<field name="limit_qty" />
+										<field name="active" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- cy.cms.flashsale tree view -->
+		<record id="cy_cms_flashsale_view_tree" model="ir.ui.view">
+			<field name="name">cy.cms.flashsale.view.tree</field>
+			<field name="model">cy.cms.flashsale</field>
+			<field name="arch" type="xml">
+				<tree>
+					<!-- Add your fields here -->
+					<field name="id" />
+					<field name="name" />
+					<field name="start_time" />
+					<field name="end_time" />
+				</tree>
+			</field>
+		</record>
+		<record id="view_cms_flashsale_filter" model="ir.ui.view">
+			<field name="name">cy.cms.flashsale.filter</field>
+			<field name="model">cy.cms.flashsale</field>
+			<field name="arch" type="xml">
+				<search string="闪购管理">
+					<field name="name" />
+					<field name="skcs" />
+					<filter string="不可用" name="no_active" domain="[('active','=', False)]"/>
+				</search>
+			</field>
+		</record>
+		<record id="cy_cms_flashsale_action" model="ir.actions.act_window">
+			<field name="name">闪购管理</field>
+			<field name="res_model">cy.cms.flashsale</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="view_cms_flashsale_filter" />
+		</record>
+
+		<record id="cy_cms_flashsale_add_skc_wizard_form" model="ir.ui.view">
+			<field name="name">cy.cms.flashsale.add.skc.wizard.form</field>
+			<field name="model">cy.cms.flashsale.add.skc.wizard</field>
+			<field name="arch" type="xml">
+				<form string="批量添加&amp;删除">
+					<div>
+						<p>数据格式(可以从excel中复制)</p>
+						<p>
+							<span>LP20210000001</span>
+							<br />
+							<span>LP20210000002</span>
+							<br />
+							<span>LP20210000003-1</span>
+							<br />
+							<span>LP20210000003-2</span>
+						</p>
+					</div>
+					<label for="skcs"></label>
+					<field name="skcs" />
+					<footer>
+						<button name="save" type="object" string="批量添加" class="oe_highlight" />
+                        or
+						<button name="remove" type="object" string="批量删除" class="oe_highlight" />
+                        or
+						<button special="cancel" string="取消" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="cy_cms_flashsale_price_wizard_form" model="ir.ui.view">
+			<field name="name">cy.cms.flashsale.price.wizard.form</field>
+			<field name="model">cy.cms.flashsale.price.wizard</field>
+			<field name="arch" type="xml">
+				<form string="批量设置价格">
+					<group>
+						<field name="price_type" />
+						<field name="rate" attrs="{'invisible': [('price_type', '!=', 'rate')]}"/>
+						<field name="price" attrs="{'invisible': [('price_type', '!=', 'price')]}"/>
+					</group>
+					<footer>
+						<button name="save" type="object" string="保存" class="oe_highlight" />
+                        or
+						<button special="cancel" string="取消" />
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

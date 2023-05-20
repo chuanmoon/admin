@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="cy_image_field">
+        <div t-att-id="'cy_image_field_'+self.imageFieldID" t-attf-class="cy_image_field {{self.viewType}}">
+            <img class="cy_image" src="https://img.your_domin.com/static/placeholder.png" />
+            <div class="cy_image_info">0%</div>
+            <t t-if="self.mode=='edit'">
+                <button t-att-id="'cy_image_upload_button_'+self.imageFieldID" class="cy_image_upload_button">上传</button>
+                <button t-att-id="'cy_image_clear_button_'+self.imageFieldID" class="cy_image_clear_button">清除</button>
+            </t>
+            <t t-if="hotspots=='True'">
+                <a t-att-id="'cy_image_hotspots_button_'+self.imageFieldID" class="cy_image_hotspots_button" target="_blank" t-attf-href="/cy_public/static/src/html/hotspot.html?v={{self.value}}">画热区</a>
+            </t>
+        </div>
+    </t>
+    <t t-name="cy_images_field">
+        <div t-att-id="'cy_image_field_'+self.imageFieldID" t-attf-class="cy_image_field {{self.viewType}}">
+            <div class="cy_images_field_content"></div>
+            <div style="clear:both;"></div>
+            <div class="cy_image_info">0%</div>
+            <t t-if="self.mode=='edit'">
+                <button t-att-id="'cy_image_upload_button_'+self.imageFieldID" class="cy_image_upload_button">上传</button>
+                <button t-att-id="'cy_image_clear_button_'+self.imageFieldID" class="cy_image_clear_button">清除</button>
+            </t>
+        </div>
+    </t>
+    <t t-name="checkbox_string_field">
+        <div class="oe_form_field">
+            <t t-foreach="datas" t-as="i">
+                <label style="font-weight:normal;margin-right: 15px;margin-bottom:0;">
+                    <input type="checkbox" t-att-class="'cbsf cbsf_'+i[0]" t-att-value="i[0]" disabled="" />
+                    <t t-esc="i[1]" />
+                </label>
+            </t>
+        </div>
+    </t>
+    <t t-extend="UserMenu">
+        <t t-jquery=".dropdown-menu" t-operation="replace">
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#" data-menu="settings">Preferences</a>
+                </li>
+                <li>
+                    <a href="#" data-menu="logout">Log out</a>
+                </li>
+            </ul>
+        </t>
+    </t>
+    <t t-name="page_frame_widget">
+        <div class="page_frame_root">
+            <div class="page_frame_iframe_refresh_div">
+                <button class="page_frame_iframe_refresh_button">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNjI1NjQ0MjMzMTYwIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjM2MTYiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNOTIyLjU2NTI4NSA1MjAuMTAzNTYyYzAuNzk5MjAyIDEwLjQzMjYwNyAxLjU5ODQwNCAyMC44MjYzMjggMS41OTg0MDQgMzEuNDQ4MjQ2IDAgMjI1LjczMTExNC0xODMuMTI1NzYxIDQwOC43NDMyODgtNDA5LjAwODMyNCA0MDguNzQzMjg4LTIyNS44ODE1NCAwLTQwOS4wMDkzNDgtMTgzLjAxMjE3NC00MDkuMDA5MzQ4LTQwOC43NDMyODggMC0yMjUuNzI5MDY4IDE4My4xMjc4MDctNDA4Ljc0MzI4OCA0MDkuMDA5MzQ4LTQwOC43NDMyODggNi41MTAyNzQgMCAxMi44MjkxOSAwLjY4NTYxNSAxOS4zMDM2NDggMC45OTA1Nkw1MzQuNDU5MDEzIDYyLjkzMzMzMWwyNzQuMDQyNDIzIDE1Ni4wOTYxNTFMNTM0LjQ1Nzk4OSAzNzUuMDg2NzQ3IDUzNC40NTc5ODkgMzAxLjk1MDAzYy02LjQ3NDQ1OC0wLjQ1NzQxOC0xMi43MTY2MjYtMS45MDMzNS0xOS4zMDM2NDgtMS45MDMzNS0xMzkuMDAxODIxIDAtMjUxLjY5NDQzOSAxMTIuNjE2ODk0LTI1MS42OTQ0MzkgMjUxLjUwNDEwNCAwIDEzOC44ODkyNTcgMTEyLjY5MTU5NSAyNTEuNTA0MTA0IDI1MS42OTQ0MzkgMjUxLjUwNDEwNCAxMzkuMDAxODIxIDAgMjUxLjY5NTQ2Mi0xMTIuNjE1ODcgMjUxLjY5NTQ2Mi0yNTEuNTA0MTA0IDAtMTAuNzczMzY4LTEuODY0NDY0LTIxLjAxNTYzOS0zLjE5NzgzMi0zMS40NDgyNDZMOTIyLjU2NTI4NSA1MjAuMTAyNTM4eiIgcC1pZD0iMzYxNyI+PC9wYXRoPjwvc3ZnPg=="></img>
+                </button>
+            </div>
+            <iframe class="page_frame_iframe" src=""></iframe>
+        </div>
+    </t>
+    <t t-name="query_builder">
+        <div>
+            <div class="cy-inline">
+                <div id="condition" style="word-break:break-all;width:80%"></div>
+                <button id="edit-btn" class="btn btn-primary o_form_button_save cy-hide">编辑</button>
+            </div>
+
+            <div class="cy-hide cy-qbuilder-container">
+                <div id="builder"></div>
+                <div class="cy-inline">
+                    <button id="save-btn" class="btn btn-primary o_form_button_save">保存</button>
+                    <button id="cancel-btn" class="btn btn-secondary o_form_button_cancel">取消</button>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="integer_input">
+        <div class="cy-input">
+            <div class="cy-input-show"></div>
+            <input class="oe_form_field cy-input-edit"></input>
+        </div>
+    </t>
+    <t t-name="cy-product-list">
+        <div>
+            <div class="product-table">
+            </div>
+            <div class="product-table-pagination">
+
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 用户组 -->
+        <record id="view_user_group_form" model="ir.ui.view">
+            <field name="name">cy.user.group.form</field>
+            <field name="model">cy.user.group</field>
+            <field name="arch" type="xml">
+                <form string="用户组">
+                    <sheet>
+                        <div class="pull-right">
+                            <span style="font-size:12px;color:#bf7e1a;" class="oe_read_only">修改在2小时内自动生效，加急请点击 >></span>
+                            <button name="apply_now" type="object" confirm="数据将在1秒后生效！" string="立即生效" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                        </div>
+                        <group>
+                            <field name="name" />
+                            <field name="new_old_range" />
+                            <field name="login_status" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_user_group_tree" model="ir.ui.view">
+            <field name="name">cy.user.group.tree</field>
+            <field name="model">cy.user.group</field>
+            <field name="arch" type="xml">
+                <tree string="用户组">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="new_old_range" />
+                    <field name="login_status" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_user_group_filter" model="ir.ui.view">
+            <field name="name">cy.user.group.filter</field>
+            <field name="model">cy.user.group</field>
+            <field name="arch" type="xml">
+                <search string="用户组">
+                    <field name="name" />
+                    <field name="new_old_range" />
+                    <field name="login_status" />
+                </search>
+            </field>
+        </record>
+        <record id="action_user_group" model="ir.actions.act_window">
+            <field name="name">用户组</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.user.group</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_user_group_filter" />
+        </record>
+        <!--end 用户组 -->
+    </data>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start WEB顶部图片 -->
+        <record id="view_home_top_form" model="ir.ui.view">
+            <field name="name">cy.home.top.form</field>
+            <field name="model">cy.home.top</field>
+            <field name="arch" type="xml">
+                <form string="WEB顶部图片">
+                    <sheet>
+                        <div class="pull-right">
+                            <button name="action_release_home_top" type="object" confirm="发布后2分钟内会对用户生效！确认发布？" string="发布当前配置" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="pc_image_url" widget="cy_images_field" />
+                                <field name="m_image_url" widget="cy_images_field" />
+                            </group>
+                            <group>
+                                <field name="start_time" />
+                                <field name="end_time" />
+                                <field name="action" />
+                                <field name="has_count_down" />
+                                <field name="active" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_home_top_tree" model="ir.ui.view">
+            <field name="name">cy.home.top.tree</field>
+            <field name="model">cy.home.top</field>
+            <field name="arch" type="xml">
+                <tree string="WEB顶部图片">
+                    <field name="sequence" widget="handle" />
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="pc_image_url" widget="cy_images_field" />
+                    <field name="m_image_url" widget="cy_images_field" />
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <field name="action" />
+                    <field name="has_count_down" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_home_top_filter" model="ir.ui.view">
+            <field name="name">cy.home.top.filter</field>
+            <field name="model">cy.home.top</field>
+            <field name="arch" type="xml">
+                <search string="WEB顶部图片">
+                    <field name="name" />
+                    <filter string="不可用" name="no_active" domain="[('active','=', False)]"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_home_top" model="ir.actions.act_window">
+            <field name="name">WEB顶部图片</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.home.top</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_home_top_filter" />
+        </record>
+        <!--end WEB顶部图片 -->
+    </data>
+</odoo>

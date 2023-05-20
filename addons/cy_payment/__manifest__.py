@@ -1,0 +1,18 @@
+{
+    'name': "CY Payment",
+    'summary': 'chuanmoon payment',
+    'description': """ CY 支付配置 """,
+    'author': 'yinshuwei',
+    'website': "https://chuanmoon.com/",
+    'depends': ['base', 'mail', 'web', 'cy_public'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/channel.xml',
+        'views/records.xml',
+        'views/menu.xml'
+    ],
+    'sequence': 1,
+    'installable': True,
+    'application': True,
+    'auto_install': True,
+}

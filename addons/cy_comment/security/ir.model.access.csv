@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_group_cy_product_comment_manager,cy_product_comment,model_cy_product_comment,cy_comment.cy_comment,1,1,1,0
+access_group_cy_user_manager,cy_account.cy_user,cy_account.model_cy_user,cy_comment.cy_comment,1,0,0,0
+access_group_cy_product_comment_statics_manager,cy_product_comment_statics,model_cy_product_comment_statics,cy_comment.cy_comment,1,1,1,0

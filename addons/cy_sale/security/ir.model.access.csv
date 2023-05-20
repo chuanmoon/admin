@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_group_cy_promotion_promotion_manager,cy_promotion,model_cy_promotion,cy_sale.promotion_manager,1,1,1,0
+access_group_cy_coupon_rule_promotion_manager,cy_coupon_rule,model_cy_coupon_rule,cy_sale.promotion_manager,1,1,1,0

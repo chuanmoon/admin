@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="cy.platform" id="cy_platform_pc">
+            <field name="name">PC</field>
+            <field name="code">web</field>
+        </record>
+        <record model="cy.platform" id="cy_platform_m">
+            <field name="name">M</field>
+            <field name="code">wap</field>
+        </record>
+        <record model="cy.platform" id="cy_platform_app">
+            <field name="name">APP</field>
+            <field name="code">app</field>
+        </record>
+    </data>
+</openerp>

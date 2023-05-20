@@ -1,0 +1,867 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+
+<head>
+    <title>编辑热区</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <style type="text/css">
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        blockquote,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        pre,
+        form,
+        fieldset,
+        legend,
+        button,
+        input,
+        textarea,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            color: #FFF;
+        }
+
+        html {
+            overflow-y: scoll;
+            overflow: -moz-scrollbars-vertical;
+            font-size: 12px;
+        }
+
+        .block {
+            position: absolute;
+            border: 1px dashed blue;
+            width: 0px;
+            height: 0px;
+            left: 0px;
+            top: 0px;
+            overflow: hidden;
+        }
+
+        .rect {
+            position: absolute;
+            border: 1px solid #2b9687;
+            overflow: hidden;
+            background: rgba(109, 169, 241, 0.3);
+        }
+
+        .handler {
+            border: 1px solid #CCC;
+            width: 16px;
+            height: 16px;
+            background: #FFF;
+            position: absolute;
+            z-index: 999999;
+        }
+
+        #edit_content {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            overflow: auto;
+            background: #333;
+        }
+
+        .right_div {
+            position: absolute;
+            right: 10px;
+            top: 60px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .text_input {
+            height: 30px;
+            width: 260px;
+            background: #333;
+            border: none;
+            border-radius: 16px;
+            padding: 0 15px;
+            margin: 0 16px;
+            outline: none;
+        }
+
+        #sku_error_span {
+            color: red;
+        }
+
+        #result_div table{
+            min-width: 600px;
+        }
+
+        #bg_btn{
+            position: absolute;
+            top:0;
+            bottom:0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0);
+            border: none;
+            outline: none;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        table {
+            min-height: 25px;
+            line-height: 25px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table tr th,
+        table tr td {
+            padding: 3px 6px;
+            border: 1px solid #999;
+        }
+        table tr.selected {
+            background-color: #3e3e3e;
+        }
+
+        #save_btn{
+            float: right;margin-top: 8px;
+        }
+
+        #name_pop,#actions_pop{
+            position: fixed;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999999;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+
+        .name_div{
+            position: relative;
+            text-align: center;
+            background-color: #000;
+            margin: 200px auto 0;
+            width: 400px;
+            border-radius: 10px;
+        }
+
+        .actions_div{
+            position: relative;
+            text-align: center;
+            background-color: #000;
+            margin: 50px auto 0;
+            width: 1200px;
+            height: 800px;
+        }
+        .actions_div table{
+            width: 1000px;
+            margin: auto;
+        }
+        .actions_div table thead{
+            width: 1065px;
+            display: block;
+        }
+        .actions_div table tbody{
+            position: relative;
+            top: -1px;
+            width: 1080px;
+            display: block;
+            max-height: 660px;
+            overflow-y: scroll; 
+        }
+        .actions_div table th:nth-child(1),
+        .actions_div table td:nth-child(1){
+            width: 100px;
+        }
+        .actions_div table th:nth-child(2),
+        .actions_div table td:nth-child(2){
+            width: 300px;
+        }
+        .actions_div table th:nth-child(3),
+        .actions_div table td:nth-child(3){
+            width: 200px;
+        }
+        .actions_div table th:nth-child(4),
+        .actions_div table td:nth-child(4){
+            width: 300px;
+        }
+        .actions_div table th:nth-child(5),
+        .actions_div table td:nth-child(5){
+            width: 80px;
+        }
+
+        input{
+            height: 30px;
+            width: 300px;
+        }
+
+        .right_div button,#actions_pop button,#name_pop button{
+            padding: 1px 10px;
+            background: #1675ff;
+            border: none;
+            border-radius: 15px;
+        }
+
+        #close_actions_btn,#close_name_btn{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .edit_btn{
+            background-color: transparent;
+            background: none !important;
+            color: rgb(24, 132, 233);
+            cursor: pointer;
+            padding: 0 !important;
+        }
+
+        #hotspot_name{
+            margin: 30px 0 20px;
+        }
+
+        .ftd{
+            display: flex;
+        }
+        .fspan{
+            flex: 1;
+        }
+
+        /* Demonstrate a "mostly customized" scrollbar
+        * (won't be visible otherwise if width/height is specified) */
+        #actions_tbody::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+        background-color: #000; /* or add it to the track */
+        }
+        /* Add a thumb */
+        #actions_tbody::-webkit-scrollbar-thumb {
+            background: #CCC;
+        }
+
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+<body>
+    <div id="edit_content">
+        <img id="image" src="">
+        <button id="bg_btn"></button>
+    </div>
+    <div style="position: absolute;background: rgba(255,255,255,0.8);width: 200px;padding:0 10px;border-radius: 5px;top: 10px;right: 10px;">
+        <input type="range" id="volume" value="100" min="20" max="200" step="10" style="width: 200px;">
+    </div>
+    <div class="right_div">
+        <br />
+        <div id="result_div">
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>名字</th>
+                        <th>点击后动作</th>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>w</th>
+                        <th>h</th>
+                    </tr>
+                </thead>
+                <tbody id="result_tbody"></tbody>
+            </table>
+        </div>
+        <button id="save_btn" disabled="disabled">保存</button>
+    </div>
+
+    <div id="actions_pop">
+        <div class="actions_div">
+            <div style="padding: 20px;">
+                <input id="action_name" placeholder="请输入名字" class="text_input" autocomplete="false">
+                <button id="query_action_btn">查询</button>
+            </div>
+            <button id="close_actions_btn">关闭</button>
+            <div class="actions_table_div">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>名字</th>
+                            <th>动作</th>
+                            <th>目标</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="actions_tbody">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="name_pop">
+        <div class="name_div">
+            <div style="padding: 20px;">
+                <input id="hotspot_name" placeholder="请输入名字" class="text_input" autocomplete="false">
+                <br/>
+                <br/>
+                <button id="save_hotspot_name_btn">保存</button>
+            </div>
+            <button id="close_name_btn">关闭</button>
+        </div>
+    </div>
+
+</body>
+<script language="javascript">
+    function rectEdit() {
+        var zoom = 1;
+        var curr_ret_id = '';
+        window.open_actions_pop = function(rect_id,action_id){
+            curr_ret_id = 'rect_'+rect_id;
+            $('#actions_pop').show();
+            load_actions();
+        }
+        window.open_name_pop = function(rect_id,name){
+            curr_ret_id = 'rect_'+rect_id;
+            $('#hotspot_name').val(name);
+            $('#name_pop').show();
+        }
+
+        function load_actions(){
+            var query_name = $('#action_name').val().trim();
+            $.post('/public/load_actions_by_name', {name:query_name},function(result){
+                var trs = [];
+                for(var i=0;i<result.length;i++){
+                    var item = result[i];
+                    trs.push(`<tr>
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.action_type}</td>
+                        <td>${item.target_data}</td>
+                        <td><button data-id="${item.id}" class="select_action edit_btn">选择</button></td>
+                        </tr>`);
+                }
+                var trHtml = trs.join('');
+                $('#actions_tbody').html(trHtml);
+            }, 'json');
+        }
+
+        $(function(){
+            $('#query_action_btn').on('click', load_actions);
+            $('#action_name').on('keypress',function(e) {
+                if(e.which == 13) {load_actions();}
+            });
+            $('#close_actions_btn').on('click',function(e) {
+                $('#actions_pop').hide();
+            });
+            $('#close_name_btn').on('click',function(e) {
+                $('#name_pop').hide();
+            });
+            $('#actions_tbody').on('click','.select_action',function(e) {
+                var action_id = $(this).attr('data-id');
+                $('#'+curr_ret_id).attr('data-action-id', action_id);
+                tryRefreshResultDiv(tryRefreshResultDivVersion);
+                $('#actions_pop').hide();
+            });
+            $('#save_hotspot_name_btn').on('click',function(){
+                $('#'+curr_ret_id).attr('data-name', $('#hotspot_name').val().trim());
+                tryRefreshResultDiv(tryRefreshResultDivVersion);
+                $('#name_pop').hide();
+            });
+            $('#save_btn').on('click', function(){
+                var rects = document.getElementsByClassName("rect");
+                var result = [];
+                for (var i = 0; i < rects.length; i++) {
+                    var rect = rects[i];
+                    var id = rect.getAttribute('data-id') || '0';
+                    var action_id = rect.getAttribute('data-action-id') || '0';
+                    var name = rect.getAttribute('data-name') || '';
+                    var top = getValue(rect.style.top);
+                    var left = getValue(rect.style.left);
+                    var width = getValue(rect.style.width);
+                    var height = getValue(rect.style.height);
+                    result.push({x:parseInt(left/zoom),y:parseInt(top/zoom),w:parseInt(width/zoom),h:parseInt(height/zoom),id:getValue(id),action_id:getValue(action_id),name:name});
+                }
+                $.post('/public/save_hotspots', {datas:JSON.stringify({'url':imageURL,'items':result})},function(result){
+                    $('#save_btn').prop('disabled', true);
+                    alert(result.msg);
+                    window.location.reload();
+                }, 'json');
+            });
+        });
+
+        function getQuerysByURL(str) {
+            var querys = {};
+            if (str.indexOf("?") != -1) {
+                var str = str.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    var key = strs[i].split("=")[0];
+                    var value = unescape(strs[i].split("=")[1]);
+                    querys[key.trim()] = value.trim();
+                }
+            }
+            return querys;
+        }
+
+        function getValue(text) {
+            if (!text) {
+                return 0;
+            }
+            text = (text+'').replace("px", "");
+            if (!text) {
+                return 0;
+            }
+            return parseInt(text);
+        }
+
+        var querys = getQuerysByURL(window.location.search);
+        var selectedRect = "";
+        var index = 0;
+        var startX = 0,
+            startY = 0,
+            startLeft = 0,
+            startTop = 0;
+        var flag = false,
+            hasAdd = false,
+            handlerFlag = false,
+            rectFlag = false,
+            selectedHandler = null;
+        var rectLeft = 0,
+            rectTop = 0,
+            rectHeight = 0,
+            rectWidth = 0;
+        var handlerLeftTop = null,
+            handlerLeftBottom = null,
+            handlerLeftMiddle = null,
+            handlerRightTop = null,
+            handlerRightBottom = null,
+            handlerRightMiddle = null,
+            handlerCenterTop = null,
+            handlerCenterBottom = null;
+        var editContent = document.getElementById("edit_content"),
+            skuErrorSpan = document.getElementById("sku_error_span"),
+            skuDiv = document.getElementById("sku_div"),
+            resultTbody = document.getElementById("result_tbody"),
+            imageEle = document.getElementById("image");
+
+        function dataToRect(buttons){
+            console.log(buttons);
+            if (!buttons || buttons.length == 0) {
+                return;
+            }
+
+            var viewWidth = imageEle.width;
+            var viewHeight = imageEle.height;
+            for (var i = 0; i < buttons.length; i++) {
+                var button = buttons[i];
+                index++;
+                selectedRect = "rect_" + index;
+                var div = document.createElement("button");
+                div.id = selectedRect;
+                div.className = "rect";
+                div.style.left = button.x + "px";
+                div.style.top = button.y + "px";
+                div.style.width = button.w + "px";
+                div.style.height = button.h + "px";
+                div.setAttribute("data-id", button.id);
+                div.setAttribute("data-action-id", button.action_id);
+                div.setAttribute("data-name", button.name);
+                editContent.appendChild(div);
+            }
+            refreshRects();
+        }
+
+        var imageURL = querys["v"];
+        imageEle.setAttribute("src", "//img.your_domin.com/"+imageURL);
+        imageEle.onload = function () {
+            $.post('/public/load_hotspots', {v:imageURL},function(res){
+                dataToRect(res);
+            }, 'json');
+        }
+
+        function refreshHandlers(rect) {
+            var handlers = document.getElementsByClassName("handler");
+            if (handlers.length != 8) {
+                handlerLeftTop = document.createElement("button");
+                handlerLeftTop.className = "handler";
+                editContent.appendChild(handlerLeftTop);
+                handlerLeftBottom = document.createElement("button");
+                handlerLeftBottom.className = "handler";
+                editContent.appendChild(handlerLeftBottom);
+                handlerLeftMiddle = document.createElement("button");
+                handlerLeftMiddle.className = "handler";
+                editContent.appendChild(handlerLeftMiddle);
+                handlerRightTop = document.createElement("button");
+                handlerRightTop.className = "handler";
+                editContent.appendChild(handlerRightTop);
+                handlerRightBottom = document.createElement("button");
+                handlerRightBottom.className = "handler";
+                editContent.appendChild(handlerRightBottom);
+                handlerRightMiddle = document.createElement("button");
+                handlerRightMiddle.className = "handler";
+                editContent.appendChild(handlerRightMiddle);
+                handlerCenterTop = document.createElement("button");
+                handlerCenterTop.className = "handler";
+                editContent.appendChild(handlerCenterTop);
+                handlerCenterBottom = document.createElement("button");
+                handlerCenterBottom.className = "handler";
+                editContent.appendChild(handlerCenterBottom);
+            }
+            var top = -100,
+                left = -100,
+                width = -100,
+                height = -100;
+            if (rect) {
+                top = getValue(rect.style.top);
+                left = getValue(rect.style.left);
+                width = getValue(rect.style.width);
+                height = getValue(rect.style.height);
+            }
+            handlerLeftTop.style.top = top - 8 + "px";
+            handlerLeftTop.style.left = left - 8 + "px";
+            handlerLeftBottom.style.top = top + height - 8 + "px";
+            handlerLeftBottom.style.left = left - 8 + "px";
+            handlerLeftMiddle.style.top = top + height / 2 - 8 + "px";
+            handlerLeftMiddle.style.left = left - 8 + "px";
+            handlerRightTop.style.top = top - 8 + "px";
+            handlerRightTop.style.left = left + width - 8 + "px";
+            handlerRightBottom.style.top = top + height - 8 + "px";
+            handlerRightBottom.style.left = left + width - 8 + "px";
+            handlerRightMiddle.style.top = top + height / 2 - 8 + "px";
+            handlerRightMiddle.style.left = left + width - 8 + "px";
+            handlerCenterTop.style.top = top - 8 + "px";
+            handlerCenterTop.style.left = left + width / 2 - 8 + "px";
+            handlerCenterBottom.style.top = top + height - 8 + "px";
+            handlerCenterBottom.style.left = left + width / 2 - 8 + "px";
+            
+            tryRefreshResultDivVersion++;
+            tryRefreshResultDiv(tryRefreshResultDivVersion);
+        }
+        
+        var tryRefreshResultDivVersion = 0;
+        function tryRefreshResultDiv(refreshResultDivVersion) {
+            setTimeout(function(){
+                refreshResultDiv(refreshResultDivVersion);
+            }, 200)
+        }
+        function refreshResultDiv(refreshResultDivVersion) {
+            console.log(tryRefreshResultDivVersion, refreshResultDivVersion)
+            if(tryRefreshResultDivVersion!=refreshResultDivVersion){
+                return;
+            }
+            if(tryRefreshResultDivVersion>0){
+                $('#save_btn').prop('disabled', false);
+            }
+            var rects = document.getElementsByClassName("rect");
+            var action_ids = [];
+            var result = [];
+            for (var i = 0; i < rects.length; i++) {
+                var rect = rects[i];
+                var rect_id = rect.id.replace('rect_','');
+                var id = rect.getAttribute('data-id') || '0';
+                var action_id = rect.getAttribute('data-action-id') || '0';
+                var name = rect.getAttribute('data-name') || '';
+                var top = getValue(rect.style.top)/zoom;
+                var left = getValue(rect.style.left)/zoom;
+                var width = getValue(rect.style.width)/zoom;
+                var height = getValue(rect.style.height)/zoom;
+                if(action_id!='0'){
+                    action_ids.push(parseInt(action_id));
+                }
+                result.push({x:parseInt(left),y:parseInt(top),w:parseInt(width),h:parseInt(height),id:id,action_id,rect_id:rect_id,name:name});
+            }
+            
+            $.post('/public/load_actions_by_ids',{action_ids:JSON.stringify(action_ids)},function(res){
+                var trs = [];
+                for(var i=0;i<result.length;i++){
+                    var item = result[i];
+                    trs.push(`<tr id="tr_${item.rect_id}" class="${selectedRect=='rect_'+item.rect_id?'selected':''}">
+                        <td>${item.id}</td>
+                        <td><div class="ftd"><span class="fspan">${item.name}</span><button onclick="open_name_pop(${item.rect_id},'${item.name}');" class="edit_btn">修改</button></div></td>
+                        <td><div class="ftd"><span class="fspan">${res[item.action_id] || ''}</span><button onclick="open_actions_pop(${item.rect_id},${item.action_id});" class="edit_btn">修改</button></div></td>
+                        <td>${item.x}</td>
+                        <td>${item.y}</td>
+                        <td>${item.w}</td>
+                        <td>${item.h}</td>
+                        </tr>`);
+                }
+                resultTbody.innerHTML = trs.join('');
+            },'json')
+            
+        }
+
+
+        function refreshRects() {
+            refreshHandlers(document.getElementById(selectedRect));
+        }
+
+        function handlerMove(evt) {
+            var scrollLeft = editContent.scrollLeft || editContent.scrollLeft;
+            var scrollTop = editContent.scrollTop || editContent.scrollTop;
+            var rect = document.getElementById(selectedRect);
+            var top = getValue(rect.style.top);
+            var left = getValue(rect.style.left);
+            var width = getValue(rect.style.width);
+            var height = getValue(rect.style.height);
+            var aLeft = 0;
+            var bLeft = 0;
+            var aTop = 0;
+            var bTop = 0;
+            var isTop = false;
+            var isLeft = false;
+            if (handlerLeftTop == selectedHandler) {
+                aLeft = evt.clientX + scrollLeft;
+                bLeft = left + width;
+                aTop = evt.clientY + scrollTop;
+                bTop = top + height;
+                isLeft = true;
+                isTop = true;
+            } else if (handlerLeftBottom == selectedHandler) {
+                aLeft = evt.clientX + scrollLeft;
+                bLeft = left + width;
+                aTop = top;
+                bTop = evt.clientY + scrollTop;
+                isLeft = true;
+                isTop = false;
+            } else if (handlerLeftMiddle == selectedHandler) {
+                aLeft = evt.clientX + scrollLeft;
+                bLeft = left + width;
+                aTop = top;
+                bTop = top + height;
+                isLeft = true;
+                isTop = false;
+            } else if (handlerRightTop == selectedHandler) {
+                aLeft = left;
+                bLeft = evt.clientX + scrollLeft;
+                aTop = evt.clientY + scrollTop;
+                bTop = top + height;
+                isLeft = false;
+                isTop = true;
+            } else if (handlerRightBottom == selectedHandler) {
+                aLeft = left;
+                bLeft = evt.clientX + scrollLeft;
+                aTop = top;
+                bTop = evt.clientY + scrollTop;
+                isLeft = false;
+                isTop = false;
+            } else if (handlerRightMiddle == selectedHandler) {
+                aLeft = left;
+                bLeft = evt.clientX + scrollLeft;
+                aTop = top;
+                bTop = top + height;
+                isLeft = false;
+                isTop = false;
+            } else if (handlerCenterTop == selectedHandler) {
+                aLeft = left;
+                bLeft = left + width;
+                aTop = evt.clientY + scrollTop;
+                bTop = top + height;
+                isLeft = false;
+                isTop = true;
+            } else if (handlerCenterBottom == selectedHandler) {
+                aLeft = left;
+                bLeft = left + width;
+                aTop = top;
+                bTop = evt.clientY + scrollTop;
+                isLeft = false;
+                isTop = false;
+            }
+
+            if (isLeft) {
+                if (aLeft >= bLeft - 30) {
+                    aLeft = bLeft - 30;
+                }
+            } else if (aLeft >= bLeft - 30) {
+                bLeft = aLeft + 30;
+            }
+            rect.style.left = aLeft + "px";
+            rect.style.width = bLeft - aLeft + "px";
+            if (isTop) {
+                if (aTop >= bTop - 30) {
+                    aTop = bTop - 30;
+                }
+            } else if (aTop >= bTop - 30) {
+                bTop = aTop + 30;
+            }
+            rect.style.top = aTop + "px";
+            rect.style.height = bTop - aTop + "px";
+
+            refreshHandlers(rect);
+        }
+
+        editContent.onmousedown = function (e) {
+            var evt = window.event || e;
+            var scrollTop = editContent.scrollTop || editContent.scrollTop;
+            var scrollLeft = editContent.scrollLeft || editContent.scrollLeft;
+            startX = evt.clientX + scrollLeft;
+            startY = evt.clientY + scrollTop;
+            if (evt.button != 0) {
+                return;
+            }
+            if (evt.target && evt.target.className == "rect") {
+                selectedRect = evt.target.id;
+                refreshRects();
+                startLeft = getValue(evt.target.style.left);
+                startTop = getValue(evt.target.style.top);
+                rectFlag = true;
+                return;
+            }
+            if (evt.target && evt.target.className == "handler") {
+                handlerFlag = true;
+                selectedHandler = evt.target;
+                return;
+            }
+            flag = true;
+            try {
+                hasAdd = false;
+                index++;
+                var div = document.createElement("div");
+                div.id = "block_" + index;
+                div.className = "block";
+                div.style.left = startX + "px";
+                div.style.top = startY + "px";
+                editContent.appendChild(div);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        editContent.onmouseup = function (e) {
+            var evt = window.event || e;
+            if (evt.button != 0) {
+                return;
+            }
+            try {
+                if (flag) {
+                    var blocks = document.getElementsByClassName("block");
+                    for (var i = 0; i < blocks.length; i++) {
+                        editContent.removeChild(blocks[i]);
+                    }
+                    if (hasAdd && rectWidth>30 && rectHeight>30) {
+                        selectedRect = "rect_" + index;
+                        var div = document.createElement("button");
+                        div.id = selectedRect;
+                        div.className = "rect";
+                        div.style.left = rectLeft + "px";
+                        div.style.top = rectTop + "px";
+                        div.style.width = rectWidth + "px";
+                        div.style.height = rectHeight + "px";
+                        editContent.appendChild(div);
+                        refreshRects();
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+            flag = false;
+            handlerFlag = false;
+            rectFlag = false;
+        }
+
+        editContent.onmousemove = function (e) {
+            var evt = window.event || e;
+            if (evt.button != 0) {
+                return;
+            }
+            try {
+                if (handlerFlag) {
+                    handlerMove(evt)
+                } else if (rectFlag) {
+                    var scrollLeft = editContent.scrollLeft || editContent.scrollLeft;
+                    var scrollTop = editContent.scrollTop || editContent.scrollTop;
+                    var rect = document.getElementById(selectedRect);
+                    rect.style.left = startLeft - startX + evt.clientX + scrollLeft + "px";
+                    rect.style.top = startTop - startY + evt.clientY + scrollTop + "px";
+                    refreshHandlers(rect);
+                } else if (flag) {
+                    hasAdd = true;
+                    var scrollLeft = editContent.scrollLeft || editContent.scrollLeft;
+                    var scrollTop = editContent.scrollTop || editContent.scrollTop;
+                    rectLeft = (startX - evt.clientX - scrollLeft > 0 ? evt.clientX + scrollLeft : startX);
+                    rectTop = (startY - evt.clientY - scrollTop > 0 ? evt.clientY + scrollTop : startY);
+                    rectHeight = Math.abs(startY - evt.clientY - scrollTop);
+                    rectWidth = Math.abs(startX - evt.clientX - scrollLeft);
+                    document.getElementById("block_" + index).style.left = rectLeft + "px";
+                    document.getElementById("block_" + index).style.top = rectTop + "px";
+                    document.getElementById("block_" + index).style.width = rectWidth + "px";
+                    document.getElementById("block_" + index).style.height = rectHeight + "px";
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        editContent.onkeydown = function (e) {
+            var evt = window.event || e;
+            var rect = document.getElementById(selectedRect);
+            if (!rect) {
+                return;
+            }
+            if (evt.keyCode == 46 || evt.keyCode == 8) {
+                editContent.removeChild(rect);
+                refreshHandlers(null);
+            }
+
+            if (evt.keyCode == 37 || evt.keyCode == 38 || evt.keyCode == 39 || evt.keyCode == 40) {
+                var step = 1;
+                if (e.ctrlKey) {
+                    step = 10;
+                }
+                if (evt.keyCode == 37) {
+                    rect.style.left = getValue(rect.style.left) - step + "px";
+                    refreshHandlers(rect);
+                }
+                if (evt.keyCode == 38) {
+                    rect.style.top = getValue(rect.style.top) - step + "px";
+                    refreshHandlers(rect);
+                }
+                if (evt.keyCode == 39) {
+                    rect.style.left = getValue(rect.style.left) + step + "px";
+                    refreshHandlers(rect);
+                }
+                if (evt.keyCode == 40) {
+                    rect.style.top = getValue(rect.style.top) + step + "px";
+                    refreshHandlers(rect);
+                }
+                evt.stopImmediatePropagation();
+                evt.stopPropagation();
+                evt.preventDefault();
+            }
+            refreshRects();
+        }
+
+        $('#volume').on('change',function(){
+            var newZoom = parseFloat($(this).val())/100;
+            $('#image').css('zoom', newZoom);
+
+            var rects = document.getElementsByClassName("rect");
+            for (var i = 0; i < rects.length; i++) {
+                var rect = rects[i];
+                rect.style.top = getValue(rect.style.top)/zoom*newZoom + 'px';
+                rect.style.left = getValue(rect.style.left)/zoom*newZoom + 'px';
+                rect.style.width = getValue(rect.style.width)/zoom*newZoom + 'px';
+                rect.style.height = getValue(rect.style.height)/zoom*newZoom + 'px';
+            }
+
+            zoom = newZoom;
+            refreshRects();
+        });
+    }
+    rectEdit();
+</script>
+
+</html>

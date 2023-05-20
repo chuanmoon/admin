@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 邮件列表 -->
+        <record id="view_mailing_list_form" model="ir.ui.view">
+            <field name="name">cy.mailing.list.form</field>
+            <field name="model">cy.mailing.list</field>
+            <field name="arch" type="xml">
+                <form string="邮件列表">
+                    <sheet>
+                        <group>
+                            <field name="email" />
+                            <field name="create_date" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_mailing_list_tree" model="ir.ui.view">
+            <field name="name">cy.mailing.list.form</field>
+            <field name="model">cy.mailing.list</field>
+            <field name="arch" type="xml">
+                <tree string="邮件列表">
+                    <field name="email" />
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_mailing_list_filter" model="ir.ui.view">
+            <field name="name">cy.mailing.list.filter</field>
+            <field name="model">cy.mailing.list</field>
+            <field name="arch" type="xml">
+                <search string="邮件列表">
+                    <field name="email" />
+                    <field name="create_date"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_mailing_list" model="ir.actions.act_window">
+            <field name="name">邮件列表</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.mailing.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_mailing_list_filter" />
+        </record>
+        <!--end 邮件列表 -->
+    </data>
+</odoo>

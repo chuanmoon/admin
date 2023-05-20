@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 弹框 -->
+        <record id="view_popup_form" model="ir.ui.view">
+            <field name="name">cy.popup.form</field>
+            <field name="model">cy.popup</field>
+            <field name="arch" type="xml">
+                <form string="弹框">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="is_repeat" />
+                                <field name="interval_hours" attrs="{'invisible': [('is_repeat', '!=', True)]}" />
+                                <field name="active" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="user_groups" widget="many2many_tags" options="{'no_create':True,'no_create_edit':True,'no_open':True}" />
+                                <field name="start_time" />
+                                <field name="end_time" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="image_url" widget="cy_image_field" hotspots="True" />
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_popup_tree" model="ir.ui.view">
+            <field name="name">cy.popup.tree</field>
+            <field name="model">cy.popup</field>
+            <field name="arch" type="xml">
+                <tree string="弹框">
+                    <field name="sequence" widget="handle" />
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="image_url" widget="cy_image_field" />
+                    <field name="user_groups" widget="many2many_tags" />
+                    <field name="is_repeat" />
+                    <field name="interval_hours" />
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_popup_filter" model="ir.ui.view">
+            <field name="name">cy.popup.filter</field>
+            <field name="model">cy.popup</field>
+            <field name="arch" type="xml">
+                <search string="弹框">
+                    <field name="name" />
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <filter string="不可用" name="no_active" domain="[('active','=', False)]"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_popup" model="ir.actions.act_window">
+            <field name="name">弹框</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.popup</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_popup_filter" />
+        </record>
+        <!--end 弹框 -->
+    </data>
+</odoo>

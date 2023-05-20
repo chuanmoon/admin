@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="cy_product_source_view_form" model="ir.ui.view">
+        <field name="name">cy.product.source.view.form</field>
+        <field name="model">cy.product.source</field>
+        <field name="arch" type="xml">
+            <form string="商品来源管理">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="channel" />
+                        <field name="images" widget="cy_images_field" />
+                        <field name="url" />
+                        <field name="spu_id" />
+                        <field name="content" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="cy_product_source_view_tree" model="ir.ui.view">
+        <field name="name">cy.product.source.view.tree</field>
+        <field name="model">cy.product.source</field>
+        <field name="arch" type="xml">
+            <tree string="商品来源管理">
+                <field name="name" />
+                <field name="channel" />
+                <field name="images" widget="cy_images_field" />
+                <field name="url" />
+                <field name="spu_id" />
+                <field name="content" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_source_filter" model="ir.ui.view">
+        <field name="name">cy.product.source.filter</field>
+        <field name="model">cy.product.source</field>
+        <field name="arch" type="xml">
+            <search string="商品来源管理">
+                <field name="name" />
+                <field name="channel" />
+                <field name="url" />
+                <field name="spu_id" />
+                <field name="content" />
+            </search>
+        </field>
+    </record>
+
+    <record id="cy_product_source_action" model="ir.actions.act_window">
+        <field name="name">商品来源管理</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cy.product.source</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_product_source_filter" />
+    </record>
+</odoo>

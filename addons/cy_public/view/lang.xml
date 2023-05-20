@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 语言 -->
+        <record id="view_lang_form" model="ir.ui.view">
+            <field name="name">cy.lang.form</field>
+            <field name="model">cy.lang</field>
+            <field name="arch" type="xml">
+                <form string="语言">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="code" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_lang_tree" model="ir.ui.view">
+            <field name="name">cy.lang.tree</field>
+            <field name="model">cy.lang</field>
+            <field name="arch" type="xml">
+                <tree string="语言">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_lang_filter" model="ir.ui.view">
+            <field name="name">cy.lang.filter</field>
+            <field name="model">cy.lang</field>
+            <field name="arch" type="xml">
+                <search string="语言">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="active" />
+                </search>
+            </field>
+        </record>
+        <record id="action_lang" model="ir.actions.act_window">
+            <field name="name">语言</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.lang</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_lang_filter" />
+        </record>
+        <!--end 语言 -->
+    </data>
+</odoo>

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+		<!-- cy.product.skc form view -->
+		<record id="cy_product_skc_view_form" model="ir.ui.view">
+			<field name="name">cy.product.skc.view.form</field>
+			<field name="model">cy.product.skc</field>
+			<field name="arch" type="xml">
+				<form string="商品颜色">
+					<sheet>
+						<group>
+							<!-- Add your fields here -->
+							<field name="name" />
+							<field name="spu_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True,'no_open':True}"/>
+							<field name="skc_sn" readonly="True"/>
+							<field name="image_urls" widget="cy_images_field" />
+							<field name="color_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True,'no_open':True}"/>
+							<field name="color_img" widget="advanced_html" readonly="True"/>
+							<field name="market_price" readonly="True" />
+							<field name="shop_price" readonly="True" />
+							<field name="tag" />
+							<field name="limit_qty"/>
+							<field name="active" />
+						</group>
+
+						<notebook>
+							<page name="info" string="info">
+								<field name="info" widget="cy_images_field" />
+							</page>
+							<page name="prices" string="价格">
+								<field name="prices">
+									<form>
+										<group>
+											<field name="shop_price" />
+											<field name="start_time" />
+											<field name="end_time" />
+											<field name="active" />
+										</group>
+									</form>
+									<tree>
+										<field name="sequence" widget="handle"/>
+										<field name="shop_price" />
+										<field name="start_time" />
+										<field name="end_time" />
+										<field name="active" />
+									</tree>
+								</field>
+							</page>
+							<page name="skus" string="sku">
+								<field name="skus" readonly="True">
+									<tree>
+										<field name="id" />
+										<field name="sku_sn" />
+										<field name="size_id" />
+										<field name="active" />
+									</tree>
+								</field>
+							</page>
+							<page string="属性" readonly="True">
+								<field name="attributes">
+									<tree>
+										<field name="id" />
+										<field name="skc_id" />
+										<field name="attrs" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+		<!-- cy.product.skc tree view -->
+		<record id="cy_product_skc_view_tree" model="ir.ui.view">
+			<field name="name">cy.product.skc.view.tree</field>
+			<field name="model">cy.product.skc</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="id" />
+					<field name="spu_id" />
+					<field name="name" />
+					<field name="skc_sn" />
+					<field name="sku_count" />
+					<field name="image_urls" widget="cy_images_field" />
+					<field name="color_id"/>
+					<field name="publish_time"/>
+					<field name="first_shelf_time"/>
+					<field name="tag" />
+					<field name="color_img_list" widget="cy_image_field"/>
+					<field name="market_price" />
+					<field name="shop_price" />
+					<field name="active" />
+					<field name="limit_qty"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- cy.product.skc search view -->
+		<record id="cy_product_skc_view_search" model="ir.ui.view">
+			<field name="name">cy.product.skc.view.search</field>
+			<field name="model">cy.product.skc</field>
+			<field name="arch" type="xml">
+				<search string="search">
+					<!-- Add your fields here -->
+					<field name="id" />
+					<field name="spu_id" />
+					<field name="name" filter_domain="[('name', 'ilike', self)]"/>
+					<field name="skc_sn" />
+				</search>
+			</field>
+		</record>
+
+		<record id="cy_product_skc_action" model="ir.actions.act_window">
+			<field name="name">skc列表</field>
+			<field name="res_model">cy.product.skc</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"active_test":False}</field>
+		</record>
+	</data>
+</odoo>

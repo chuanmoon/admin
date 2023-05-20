@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cy_share_view_form" model="ir.ui.view">
+        <field name="name">cy.share.view.form</field>
+        <field name="model">cy.share</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="active" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="channel" />
+                            <field name="template" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="cy_share_view_tree" model="ir.ui.view">
+        <field name="name">cy.share.view.tree</field>
+        <field name="model">cy.share</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="id" />
+                <field name="name" />
+                <field name="channel" />
+                <field name="template" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_share_filter" model="ir.ui.view">
+        <field name="name">cy.share.filter</field>
+        <field name="model">cy.share</field>
+        <field name="arch" type="xml">
+            <search string="分享设置">
+                <field name="name" />
+                <field name="channel" />
+                <filter string="不可用" name="no_active" domain="[('active','=', False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="cy_share_action" model="ir.actions.act_window">
+        <field name="name">分享设置</field>
+        <field name="res_model">cy.share</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="view_share_filter" />
+    </record>
+</odoo>

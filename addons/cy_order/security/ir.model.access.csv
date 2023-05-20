@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_group_cy_order_manager,cy_order,model_cy_order,cy_order.cy_order_manager,1,1,1,0
+access_group_cy_order_item_manager,cy_order_item,model_cy_order_item,cy_order.cy_order_manager,1,1,1,0
+access_group_cy_order_shipping_manager,cy_order_shipping,model_cy_order_shipping,cy_order.cy_order_manager,1,1,1,0
+access_group_cy_order_address_manager,cy_order_address,model_cy_order_address,cy_order.cy_order_manager,1,1,1,0
+access_group_cy_order_promotion_rule_manager,cy_order_promotion_rule,model_cy_order_promotion_rule,cy_order.cy_order_manager,1,1,1,0
+access_group_cy_order_cancel_reason_manager,cy_order_cancel_reason,model_cy_order_cancel_reason,cy_order.cy_order_manager,1,1,1,0
+
+access_group_cy_order_read,cy_order,model_cy_order,cy_order.cy_order_read,1,0,0,0
+access_group_cy_order_item_read,cy_order_item,model_cy_order_item,cy_order.cy_order_read,1,0,0,0
+access_group_cy_order_shipping_read,cy_order_shipping,model_cy_order_shipping,cy_order.cy_order_read,1,0,0,0
+access_group_cy_order_address_read,cy_order_address,model_cy_order_address,cy_order.cy_order_read,1,0,0,0
+access_group_cy_order_promotion_rule_read,cy_order_promotion_rule,model_cy_order_promotion_rule,cy_order.cy_order_read,1,0,0,0
+access_group_cy_order_cancel_reason_read,cy_order_cancel_reason,model_cy_order_cancel_reason,cy_order.cy_order_read,1,0,0,0

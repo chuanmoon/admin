@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 优惠券规则 -->
+        <record id="view_coupon_rule_form" model="ir.ui.view">
+            <field name="name">cy.coupon.rule.form</field>
+            <field name="model">cy.coupon.rule</field>
+            <field name="arch" type="xml">
+                <form string="优惠券规则">
+                    <sheet>
+                        <div class="pull-right">
+                            <span style="font-size:12px;color:#bf7e1a;" class="oe_read_only">修改在2小时内自动生效，加急请点击 >></span>
+                            <button name="apply_now" type="object" confirm="规则将在1秒后生效！" string="立即生效" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" />
+                                <field name="start_time" />
+                                <field name="end_time" />
+                                <field name="days" />
+                            </group>
+                            <group>
+                                <field name="promotion_id" />
+                                <field name="send_type" widget="radio" options="{'horizontal': true}" />
+                                <field name="total_limit" />
+                                <field name="one_user_limit" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_coupon_rule_tree" model="ir.ui.view">
+            <field name="name">cy.coupon.rule.form</field>
+            <field name="model">cy.coupon.rule</field>
+            <field name="arch" type="xml">
+                <tree string="优惠券规则">
+                    <field name="code" />
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <field name="days" />
+                    <field name="total_limit" />
+                    <field name="one_user_limit" />
+                    <field name="send_type" />
+                    <field name="promotion_id" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_coupon_rule_filter" model="ir.ui.view">
+            <field name="name">cy.coupon.rule.filter</field>
+            <field name="model">cy.coupon.rule</field>
+            <field name="arch" type="xml">
+                <search string="优惠券规则">
+                    <field name="code" />
+                    <field name="start_time" />
+                    <field name="end_time" />
+                    <field name="days" />
+                    <field name="total_limit" />
+                    <field name="one_user_limit" />
+                    <field name="send_type" />
+                    <field name="promotion_id" />
+                </search>
+            </field>
+        </record>
+        <record id="action_coupon_rule" model="ir.actions.act_window">
+            <field name="name">优惠券规则配置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.coupon.rule</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_coupon_rule_filter" />
+        </record>
+        <!--end 优惠券规则 -->
+    </data>
+</odoo>

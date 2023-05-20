@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Add you code here -->
+
+		<!-- cy.payment.channel form view -->
+		<record id="cy_payment_channel_view_form" model="ir.ui.view">
+			<field name="name">cy.payment.channel.view.form</field>
+			<field name="model">cy.payment.channel</field>
+			<field name="arch" type="xml">
+				<form string="支付渠道">
+					<sheet>
+						<group>
+							<!-- Add your fields here -->
+							<field name="code" readonly="True"/>
+							<field name="config" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- cy.payment.channel tree view -->
+		<record id="cy_payment_channel_view_tree" model="ir.ui.view">
+			<field name="name">cy.payment.channel.view.tree</field>
+			<field name="model">cy.payment.channel</field>
+			<field name="arch" type="xml">
+				<tree>
+					<!-- Add your fields here -->
+					<field name="code" />
+					<field name="config" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record id="payment_page_action" model="ir.actions.act_window">
+			<field name="name">支付渠道管理</field>
+			<field name="res_model">cy.payment.channel</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

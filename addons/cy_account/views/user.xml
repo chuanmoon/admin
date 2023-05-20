@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--start 用户 -->
+        <record id="view_user_form" model="ir.ui.view">
+            <field name="name">cy.user.form</field>
+            <field name="model">cy.user</field>
+            <field name="arch" type="xml">
+                <form string="用户">
+                    <sheet>
+                        <group>
+                            <field name="id" />
+                            <field name="email" />
+                            <field name="state" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_user_tree" model="ir.ui.view">
+            <field name="name">cy.user.tree</field>
+            <field name="model">cy.user</field>
+            <field name="arch" type="xml">
+                <tree string="用户">
+                    <field name="id" />
+                    <field name="email" />
+                    <field name="state" />
+                    <field name="create_date" optional="hide" />
+                    <field name="write_date" optional="hide" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="write_uid" optional="hide" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_user_filter" model="ir.ui.view">
+            <field name="name">cy.user.filter</field>
+            <field name="model">cy.user</field>
+            <field name="arch" type="xml">
+                <search string="用户">
+                    <field name="email" />
+                    <field name="id" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_user" model="ir.actions.act_window">
+            <field name="name">用户</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cy.user</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_user_filter" />
+        </record>
+        <!--end 用户 -->
+    </data>
+</odoo>
