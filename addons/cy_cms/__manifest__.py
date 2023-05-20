@@ -11,7 +11,8 @@
         Home
         Nav
     """,
-    'website': 'https://chuanmoon.com/',
+    'website': "https://chuanmoon.com/",
+    'category': 'Website/Website',
     'depends': ['web', 'mail', 'cy_public', 'cy_product', 'web_notify'],
     'data': [
         'security/security.xml',

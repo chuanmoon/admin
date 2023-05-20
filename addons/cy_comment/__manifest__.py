@@ -4,6 +4,7 @@
     'description': """ CY 评价管理 """,
     'author': 'yinshuwei',
     'website': "https://chuanmoon.com/",
+    'category': 'Website/Website',
     'depends': ['base', 'mail', 'web', 'cy_public', 'cy_product', 'cy_account'],
     'data': [
         'security/security.xml',

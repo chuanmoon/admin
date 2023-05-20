@@ -5,6 +5,7 @@
     'description': """ CY 销售中心 """,
     'author': '尹术伟',
     'website': "https://chuanmoon.com/",
+    'category': 'Website/Website',
     'depends': ['base', 'mail', 'web', 'cy_public', 'cy_product'],
     'data': [
         'security/security.xml',

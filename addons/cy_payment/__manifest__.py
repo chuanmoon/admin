@@ -4,6 +4,7 @@
     'description': """ CY 支付配置 """,
     'author': 'yinshuwei',
     'website': "https://chuanmoon.com/",
+    'category': 'Website/Website',
     'depends': ['base', 'mail', 'web', 'cy_public'],
     'data': [
         'security/ir.model.access.csv',

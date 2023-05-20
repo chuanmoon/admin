@@ -5,6 +5,7 @@
     'description': """ CY 公共组件 """,
     'author': '尹术伟',
     'website': "https://chuanmoon.com/",
+    'category': 'Website/Website',
     'depends': ['base', 'mail', 'web'],
     'data': [
         'security/security.xml',

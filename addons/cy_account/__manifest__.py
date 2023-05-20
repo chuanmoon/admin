@@ -5,7 +5,8 @@
     'category': '商城',
     'author': 'chuanmoon',
     'maintainer': 'yinshuwei',
-    'website': 'https://chuanmoon.com',
+    'website': "https://chuanmoon.com/",
+    'category': 'Website/Website',
     'depends': [
             'cy_public', "web"
     ],
