@@ -1,11 +1,26 @@
 # docker 安装
 
-## odoo conf
+## conf /etc/chuanmoon/odoo.conf
 ``` conf
+[options]
+; This is the password that allows database operations:
+admin_passwd = admin123456
 
-inside_gateway_link=http://172.17.0.1:9000/gateway
+; database postgresql
+db_host = 172.17.0.1
+db_port = 5432
+db_user = odoo
+db_password = 123456
+dbfilter = chuanmoon
 
-# workers
+; 线上安装好数据库后，为了安全变为False
+list_db=True
+
+; paths
+addons_path = /mnt/extra-addons
+logfile = /var/log/odoo/odoo-server.log
+
+; workers(online)
 
 workers = 8
 proxy_mode = True
@@ -46,6 +61,13 @@ docker run -v /etc/chuanmoon/:/etc/odoo/ \
 --name odoo_chuanmoon -t odoo:14
 ```
 
+## 补充
+
+docker部署odoo完成后记得设置log和odoo目录的权限
+``` shell
+sudo chmod 777 log
+sudo chmod 777 odoo
+```
 
 ## nginx
 
