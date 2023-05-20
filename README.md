@@ -69,6 +69,14 @@ sudo chmod 777 log
 sudo chmod 777 odoo
 ```
 
+## 安装依赖
+
+``` shell
+docker exec -it -u root odoo_chuanmoon bash
+pip3 install qiniu
+pip3 install pandas
+```
+
 ## nginx
 
 ``` conf
