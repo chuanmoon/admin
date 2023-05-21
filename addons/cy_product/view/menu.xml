@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<menuitem id="cy_product_sku_action_menu" action="cy_product_sku_action" parent="cy_base.cy_product_menu" sequence="100" />
-		<menuitem id="cy_product_spu_action_menu" action="cy_product_spu_action" parent="cy_base.cy_product_menu" sequence="200" />
+		<menuitem id="cy_product_spu_action_menu" action="cy_product_spu_action" parent="cy_base.cy_product_menu" sequence="100" />
+		<menuitem id="cy_product_sku_action_menu" action="cy_product_sku_action" parent="cy_base.cy_product_menu" sequence="200" />
 
 		<menuitem id="cy_product_category_menu" name="商品分类" parent="cy_base.cy_product_menu" sequence="300" />
 		<menuitem id="cy_product_category_action_menu" action="cy_product_category_action" parent="cy_product_category_menu" sequence="100" />

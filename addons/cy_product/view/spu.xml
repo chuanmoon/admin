@@ -1,32 +1,44 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<!-- Add you code here -->
-		<!-- cy.product form view -->
 		<record id="cy_product_spu_view_form" model="ir.ui.view">
 			<field name="name">cy.product.spu.view.form</field>
 			<field name="model">cy.product.spu</field>
 			<field name="arch" type="xml">
-				<form string="商品">
+				<form string="商品SPU">
 					<sheet>
-						<!-- <group>
+						<group>
 							<field name="spu_sn" readonly="True"/>
 							<field name="category_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True,'no_open':True}" />
 							<field name="active" />
 						</group>
 						<notebook>
-							<page name="skcs" string="skcs">
-								<field name="skcs" readonly="True">
-									<tree create="false" edit="false">
+							<page name="skus" string="SKU列表">
+								<field name="skus">
+									<tree>
 										<field name="id" />
-										<field name="skc_sn" />
+										<field name="sku_sn" />
 										<field name="name" />
-										<field name="display_name" />
-										<field name="sku_count" />
+										<field name="image_urls" widget="cy_images_field"/>
+										<field name="cost_price" />
+										<field name="market_price" />
+										<field name="shop_price" />
+										<field name="weight" />
+										<field name="volume" />
+										<field name="active" />
+										<field name="limit_qty" optional="hide" />
+										<field name="last_publish_time" optional="hide" />
+										<field name="first_publish_time" optional="hide" />
+										<field name="create_date" optional="hide" />
+										<field name="write_date" optional="hide" />
+										<field name="create_uid" optional="hide" />
+										<field name="write_uid" optional="hide" />
 									</tree>
+									<form>
+									</form>
 								</field>
 							</page>
-						</notebook> -->
+						</notebook>
 					</sheet>
 					<div class="oe_chatter">
 						<field name="message_follower_ids" widget="mail_followers" />
@@ -35,34 +47,29 @@
 				</form>
 			</field>
 		</record>
-		<!-- cy.product.spu tree view -->
 		<record id="cy_product_spu_view_tree" model="ir.ui.view">
 			<field name="name">cy.product.spu.view.tree</field>
 			<field name="model">cy.product.spu</field>
 			<field name="arch" type="xml">
 				<tree>
-					<!-- <field name="id" />
+					<field name="id" />
 					<field name="spu_sn" />
 					<field name="category_id" />
-					<field name="skc_count" /> -->
+					<field name="sku_count" />
+					<field name="active" />
 				</tree>
 			</field>
 		</record>
-
-		<!-- cy.product.spu search view -->
 		<record id="cy_product_spu_view_search" model="ir.ui.view">
 			<field name="name">cy.product.spu.view.search</field>
 			<field name="model">cy.product.spu</field>
 			<field name="arch" type="xml">
-				<search string="搜索选项">
-					<!-- <field name="id" />
+				<search string="商品SPU">
 					<field name="spu_sn" />
-					<field name="category_id" /> -->
+					<field name="category_id" />
 				</search>
 			</field>
 		</record>
-
-
 		<record id="cy_product_spu_action" model="ir.actions.act_window">
 			<field name="name">商品SPU</field>
 			<field name="res_model">cy.product.spu</field>

@@ -1,35 +1,81 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<!-- Add you code here -->
-		<!-- cy.product.sku form view -->
 		<record id="cy_product_sku_view_form" model="ir.ui.view">
 			<field name="name">cy.product.sku.view.form</field>
 			<field name="model">cy.product.sku</field>
 			<field name="arch" type="xml">
 				<form string="商品SKU">
 					<sheet>
-						<!-- <group>
-							<field name="sku_sn" readonly="True"/>
-							<field name="skc_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
-							<field name="spu_id" readonly="True"/>
-							<field name="size_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
-							<field name="active" />
+						<group>
+							<group>
+								<field name="sku_sn" readonly="True"/>
+								<field name="spu_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
+								<field name="active" />
+								<field name="weight" />
+								<field name="volume" />
+								<field name="limit_qty" />
+							</group>
+							<group>
+								<field name="name"/>
+								<field name="cost_price"/>
+								<field name="market_price"/>
+								<field name="shop_price"/>
+								<field name="last_publish_time" />
+								<field name="first_publish_time" />
+							</group>
 						</group>
 						<notebook>
+							<page name="base_info" string="基本信息">
+								<group>
+									<field name="image_urls" widget="cy_images_field" />
+									<field name="info" />
+									<field name="detail">
+										<tree>
+											<field name="sequence" weight="handle"/>
+											<field name="id" />
+											<field name="row_type" />
+											<field name="text_value" />
+											<field name="image_urls" weight="cy_images_field"/>
+										</tree>
+										<form>
+											<group>
+												<field name="row_type" />
+												<field name="text_value" attrs="{'invisible': [('row_type', '!=', 'text')]}"/>
+												<field name="image_urls" weight="cy_images_field" attrs="{'invisible': [('row_type', '!=', 'image')]}"/>
+												<field name="sequence" />
+											</group>
+										</form>
+									</field>
+								</group>
+							</page>
 							<page name="stock" string="库存">
 								<field name="stock">
-									<form>
-										<group>
-											<field name="stock" />
-										</group>
-									</form>
-									<tree>
+									<tree editable="True">
 										<field name="stock" />
 									</tree>
 								</field>
 							</page>
-						</notebook> -->
+							<page name="variants" string="变体属性">
+								<field name="variants">
+									<tree editable="True">
+										<field name="id" />
+										<field name="variant_id" />
+										<field name="variant_value_id" />
+										<field name="variant_image_url" weight="cy_images_field"/>
+									</tree>
+								</field>
+							</page>
+							<page name="attrs" string="常规属性">
+								<field name="attrs">
+									<tree editable="True">
+										<field name="id" />
+										<field name="attr_id" />
+										<field name="attr_value" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
 					</sheet>
 					<div class="oe_chatter">
 						<field name="message_follower_ids" widget="mail_followers" />
@@ -38,18 +84,29 @@
 				</form>
 			</field>
 		</record>
-		<!-- cy.product.sku tree view -->
 		<record id="cy_product_sku_view_tree" model="ir.ui.view">
 			<field name="name">cy.product.sku.view.tree</field>
 			<field name="model">cy.product.sku</field>
 			<field name="arch" type="xml">
 				<tree>
-					<!-- <field name="id" />
-					<field name="sku_sn" />
-					<field name="skc_id" />
+					<field name="id" />
 					<field name="spu_id" />
-					<field name="size_id" />
-					<field name="active" /> -->
+					<field name="sku_sn" />
+					<field name="name" />
+					<field name="image_urls" widget="cy_images_field"/>
+					<field name="cost_price" />
+					<field name="market_price" />
+					<field name="shop_price" />
+					<field name="weight" />
+					<field name="volume" />
+					<field name="active" />
+					<field name="limit_qty" optional="hide" />
+					<field name="last_publish_time" optional="hide" />
+					<field name="first_publish_time" optional="hide" />
+					<field name="create_date" optional="hide" />
+					<field name="write_date" optional="hide" />
+					<field name="create_uid" optional="hide" />
+					<field name="write_uid" optional="hide" />
 				</tree>
 			</field>
 		</record>
@@ -59,11 +116,9 @@
 			<field name="model">cy.product.sku</field>
 			<field name="arch" type="xml">
 				<search string="search">
-					<!-- <field name="id" />
+					<field name="name" />
 					<field name="sku_sn" />
-					<field name="skc_id" />
 					<field name="spu_id" />
-					<field name="size_id" /> -->
 				</search>
 			</field>
 		</record>

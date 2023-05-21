@@ -22,6 +22,10 @@
 				<tree string="品类普通属性定义">
 					<field name="name" />
 					<field name="active" />
+					<field name="create_date"/>
+					<field name="write_date"/>
+					<field name="create_uid"/>
+					<field name="write_uid"/>
 				</tree>
 			</field>
 		</record>
