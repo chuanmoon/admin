@@ -5,6 +5,7 @@
 			<field name="name">cy.product.sku.in_spu.view.tree</field>
 			<field name="model">cy.product.sku</field>
 			<field name="inherit_id" ref="cy_product_sku_view_tree"/>
+			<field name="mode">primary</field>
 			<field name="arch" type="xml">
 				<field name="spu_id" position="replace"/>
 			</field>
@@ -14,6 +15,7 @@
 			<field name="name">cy.product.sku.in_spu.view.form</field>
 			<field name="model">cy.product.sku</field>
 			<field name="inherit_id" ref="cy_product_sku_view_form"/>
+			<field name="mode">primary</field>
 			<field name="arch" type="xml">
 				<field name="spu_id" position="replace">
 					<field name="spu_id" readonly="True"/>
