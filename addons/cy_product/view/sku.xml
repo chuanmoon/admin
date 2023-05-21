@@ -10,14 +10,14 @@
 						<group>
 							<group>
 								<field name="sku_sn" readonly="True"/>
-								<field name="spu_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
+								<field name="name"/>
 								<field name="active" />
 								<field name="weight" />
 								<field name="volume" />
 								<field name="limit_qty" />
 							</group>
 							<group>
-								<field name="name"/>
+								<field name="spu_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
 								<field name="cost_price"/>
 								<field name="market_price"/>
 								<field name="shop_price"/>
@@ -97,9 +97,9 @@
 					<field name="cost_price" />
 					<field name="market_price" />
 					<field name="shop_price" />
-					<field name="weight" />
-					<field name="volume" />
-					<field name="active" />
+					<field name="weight" optional="hide" />
+					<field name="volume" optional="hide" />
+					<field name="active" optional="hide" />
 					<field name="limit_qty" optional="hide" />
 					<field name="last_publish_time" optional="hide" />
 					<field name="first_publish_time" optional="hide" />
