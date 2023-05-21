@@ -9,7 +9,7 @@
                 <button t-att-id="'cy_image_clear_button_'+self.imageFieldID" class="cy_image_clear_button">清除</button>
             </t>
             <t t-if="hotspots=='True'">
-                <a t-att-id="'cy_image_hotspots_button_'+self.imageFieldID" class="cy_image_hotspots_button" target="_blank" t-attf-href="/cy_public/static/src/html/hotspot.html?v={{self.value}}">画热区</a>
+                <a t-att-id="'cy_image_hotspots_button_'+self.imageFieldID" class="cy_image_hotspots_button" target="_blank" t-attf-href="/cy_base/static/src/html/hotspot.html?v={{self.value}}">画热区</a>
             </t>
         </div>
     </t>

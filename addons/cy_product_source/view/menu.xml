@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<menuitem id="cy_product_menu_group_source" name="商品来源" parent="cy_public.cy_product_menu" sequence="200" />
+		<menuitem id="cy_product_menu_group_source" name="商品来源" parent="cy_base.cy_product_menu" sequence="200" />
 		<menuitem id="cy_product_source_action_menu" action="cy_product_source_action" parent="cy_product_menu_group_source" sequence="200" />
 	</data>
 </odoo>

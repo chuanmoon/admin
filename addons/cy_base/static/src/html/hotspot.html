@@ -342,7 +342,7 @@
 
         function load_actions(){
             var query_name = $('#action_name').val().trim();
-            $.post('/public/load_actions_by_name', {name:query_name},function(result){
+            $.post('/base/load_actions_by_name', {name:query_name},function(result){
                 var trs = [];
                 for(var i=0;i<result.length;i++){
                     var item = result[i];
@@ -395,7 +395,7 @@
                     var height = getValue(rect.style.height);
                     result.push({x:parseInt(left/zoom),y:parseInt(top/zoom),w:parseInt(width/zoom),h:parseInt(height/zoom),id:getValue(id),action_id:getValue(action_id),name:name});
                 }
-                $.post('/public/save_hotspots', {datas:JSON.stringify({'url':imageURL,'items':result})},function(result){
+                $.post('/base/save_hotspots', {datas:JSON.stringify({'url':imageURL,'items':result})},function(result){
                     $('#save_btn').prop('disabled', true);
                     alert(result.msg);
                     window.location.reload();
@@ -488,7 +488,7 @@
         var imageURL = querys["v"];
         imageEle.setAttribute("src", "//img.your_domin.com/"+imageURL);
         imageEle.onload = function () {
-            $.post('/public/load_hotspots', {v:imageURL},function(res){
+            $.post('/base/load_hotspots', {v:imageURL},function(res){
                 dataToRect(res);
             }, 'json');
         }
@@ -585,7 +585,7 @@
                 result.push({x:parseInt(left),y:parseInt(top),w:parseInt(width),h:parseInt(height),id:id,action_id,rect_id:rect_id,name:name});
             }
             
-            $.post('/public/load_actions_by_ids',{action_ids:JSON.stringify(action_ids)},function(res){
+            $.post('/base/load_actions_by_ids',{action_ids:JSON.stringify(action_ids)},function(res){
                 var trs = [];
                 for(var i=0;i<result.length;i++){
                     var item = result[i];

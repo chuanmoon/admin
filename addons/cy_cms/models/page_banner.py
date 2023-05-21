@@ -34,7 +34,7 @@ class PageBanner(models.Model):
                 'method': 'CmsApi.PageBannerRelease',
                 'bizContent': json.dumps(bizContent)
             }
-            result = self.env['cy.public'].request_has_sign(inside_gateway_link, data)
+            result = self.env['cy.base'].request_has_sign(inside_gateway_link, data)
 
             if result and result.get('errorCode', 5001) == 0:
                 record.message_post(body='页面发布成功')

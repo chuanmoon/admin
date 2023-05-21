@@ -34,7 +34,7 @@ class Condition(models.Model):
                 'method': 'CmsApi.ReloadCondition',
                 'bizContent': json.dumps(bizContent)
             }
-            result = self.env['cy.public'].request_has_sign(inside_gateway_link, data)
+            result = self.env['cy.base'].request_has_sign(inside_gateway_link, data)
             print(result)
 
             if result and result.get('errorCode', 5001) == 0:

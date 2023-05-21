@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "CY Public",
-    'summary': 'chuanmoon public',
+    'name': "CY Base",
+    'summary': 'chuanmoon base',
     'description': """ CY 公共组件 """,
     'author': '尹术伟',
     'website': "https://chuanmoon.com/",
@@ -11,7 +11,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'view/records.xml',
-        'view/public.xml',
+        'view/base.xml',
         'view/action.xml',
         'view/lang.xml',
         'view/currency.xml',

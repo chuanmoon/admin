@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-''' cy_public '''
+''' cy_base '''
 
 import json
 import hashlib
@@ -14,9 +14,9 @@ from odoo import fields, models, api
 _logger = logging.getLogger(__name__)
 
 
-class Public(models.AbstractModel):
-    ''' cy_public '''
-    _name = 'cy.public'
+class Base(models.AbstractModel):
+    ''' cy_base '''
+    _name = 'cy.base'
     _description = '公共组件'
 
     @api.model

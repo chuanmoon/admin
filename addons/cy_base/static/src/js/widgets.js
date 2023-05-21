@@ -1,4 +1,4 @@
-odoo.define('cy_public.widgets', function (require) {
+odoo.define('cy_base.widgets', function (require) {
     "use strict";
 
     var basicFields = require('web.basic_fields');
@@ -52,7 +52,7 @@ odoo.define('cy_public.widgets', function (require) {
                     }
                     var infoObj = JSON.parse(info);
                     jQuery.ajax({
-                        url: '/public/imageinfo',
+                        url: '/base/imageinfo',
                         type: "GET",
                         dataType: "json",
                         async: false,
@@ -268,7 +268,7 @@ odoo.define('cy_public.widgets', function (require) {
                         html += '<a href="javascript:void(0);" class="cy_images_item_delete">删除</a>';
                     }
                     if (self.mode == 'readonly' && self.attrs.hotspots == 'True' && self.value ? 'True' : '') {
-                        html += '<a class="cy_images_hotspots_button" target="_blank" href="/cy_public/static/src/html/hotspot.html?v=' + imageSrcArr[i] + '">画热区</a>';
+                        html += '<a class="cy_images_hotspots_button" target="_blank" href="/cy_base/static/src/html/hotspot.html?v=' + imageSrcArr[i] + '">画热区</a>';
                     }
                     html += '</div></div>';
                 }
@@ -523,7 +523,7 @@ odoo.define('cy_public.widgets', function (require) {
                 var self = this
                 var container = this.$el.find(".product-table-pagination")
                 container.pagination({
-                    dataSource: "/public/condition-skcs",
+                    dataSource: "/base/condition-skcs",
                     pageSize: 100,
                     locator: "data.list",
                     totalNumberLocator: function (response) {
@@ -586,7 +586,7 @@ odoo.define('cy_public.widgets', function (require) {
         getCategorys() {
             var self = this
             jQuery.ajax({
-                url: '/public/categories',
+                url: '/base/categories',
                 type: "GET",
                 dataType: "json",
                 async: false,
@@ -596,7 +596,7 @@ odoo.define('cy_public.widgets', function (require) {
                 }
             });
             jQuery.ajax({
-                url: '/public/colors-sizes',
+                url: '/base/colors-sizes',
                 type: "GET",
                 dataType: "json",
                 async: false,
@@ -923,7 +923,7 @@ $(function () {
             drawHotspots(hc.data);
             return;
         }
-        $.post('/public/load_hotspots', { v: imageURL }, function (res) {
+        $.post('/base/load_hotspots', { v: imageURL }, function (res) {
             hotspotsCache[imageURL] = { ts: ts, data: res };
             drawHotspots(res);
         }, 'json');

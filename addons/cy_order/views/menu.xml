@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<menuitem id="order_page_menu" name="订单管理" action="cy_order_action" parent="cy_public.cy_sale_menu" sequence="100"/>
-		<menuitem id="order_cancel_reason_page_menu" name="取消定单原因" action="cy_order_cancel_reason_action" parent="cy_public.cy_sale_menu" sequence="200"/>
+		<menuitem id="order_page_menu" name="订单管理" action="cy_order_action" parent="cy_base.cy_sale_menu" sequence="100"/>
+		<menuitem id="order_cancel_reason_page_menu" name="取消定单原因" action="cy_order_cancel_reason_action" parent="cy_base.cy_sale_menu" sequence="200"/>
 	</data>
 </odoo>

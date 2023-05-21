@@ -27,7 +27,7 @@ class HomeTop(models.Model):
                 'method': 'CmsApi.HomeTopRelease',
                 'bizContent': '{}'
             }
-            result = self.env['cy.public'].request_has_sign(inside_gateway_link, data)
+            result = self.env['cy.base'].request_has_sign(inside_gateway_link, data)
 
             if result and result.get('errorCode', 5001) == 0:
                 record.message_post(body='WEB页面顶部图片发布成功')

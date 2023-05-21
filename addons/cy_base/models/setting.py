@@ -44,5 +44,5 @@ class Currency(models.Model):
                 'table': 'cy_currency',
                 'id': str(record.id),
             }
-            result = self.env['cy.public'].request_has_sign(inside_gateway_link+'/publish', data)
+            result = self.env['cy.base'].request_has_sign(inside_gateway_link+'/publish', data)
             print(result)

@@ -17,7 +17,7 @@ import qiniu
 _logger = logging.getLogger(__name__)
 
 
-class PublicController(http.Controller):
+class BaseController(http.Controller):
     @http.route('/uptoken', auth='public')
     def uptoken(self):
         ''' 上传token '''
@@ -58,14 +58,14 @@ class PublicController(http.Controller):
         except requests.exceptions.Timeout:
             return False
 
-    @http.route('/public/imageinfo', auth='user')
+    @http.route('/base/imageinfo', auth='user')
     def save_imageinfo(self, req, **kw):
         name = kw.get('v', False)
         old_name = kw.get('ov', False)
 
         self.do_save_imageinfo(name, old_name)
 
-    @http.route('/public/load_hotspots', auth='user', csrf=False)
+    @http.route('/base/load_hotspots', auth='user', csrf=False)
     def load_hotspots(self, req, **kw):
         name = kw.get('v', False)
         if not name:
@@ -85,7 +85,7 @@ class PublicController(http.Controller):
             })
         return json.dumps(result)
 
-    @http.route('/public/save_hotspots', auth='user', csrf=False)
+    @http.route('/base/save_hotspots', auth='user', csrf=False)
     def save_hotspots(self, req, **kw):
         datas = json.loads(kw.get('datas', '{}'))
         image_url = datas.get('url', '')
@@ -114,7 +114,7 @@ class PublicController(http.Controller):
 
         return '{"msg":"保存成功"}'
 
-    @http.route('/public/load_actions_by_ids', auth='user', csrf=False)
+    @http.route('/base/load_actions_by_ids', auth='user', csrf=False)
     def load_actions_by_ids(self, req, **kw):
         action_ids = json.loads(kw.get('action_ids', '[]'))
         if not action_ids:
@@ -125,7 +125,7 @@ class PublicController(http.Controller):
             result[str(action.id)] = action.name
         return json.dumps(result)
 
-    @http.route('/public/load_actions_by_name', auth='user', csrf=False)
+    @http.route('/base/load_actions_by_name', auth='user', csrf=False)
     def load_actions_by_name(self, req, **kw):
         name = kw.get('name', '')
         action_obj = request.env['cy.action'].sudo()
@@ -144,7 +144,7 @@ class PublicController(http.Controller):
             })
         return json.dumps(result)
 
-    @http.route('/public/categories', auth='user', csrf=False)
+    @http.route('/base/categories', auth='user', csrf=False)
     def categories(self, req, **kw):
         category = request.env['cy.product.category'].sudo()
         result = []
@@ -158,7 +158,7 @@ class PublicController(http.Controller):
             result.append(info)
         return json.dumps(result)
 
-    @http.route('/public/colors-sizes', auth='user', csrf=False)
+    @http.route('/base/colors-sizes', auth='user', csrf=False)
     def colors_and_sizes(self, req, **kw):
         colordb = request.env['cy.product.color'].sudo()
         colors = colordb.search([], order='id')
@@ -187,7 +187,7 @@ class PublicController(http.Controller):
         }
         return json.dumps(data)
 
-    @http.route('/public/condition-skcs', auth='user', csrf=False)
+    @http.route('/base/condition-skcs', auth='user', csrf=False)
     def condition_skc(self, req, **kw):
         body = {
             'conditionId': int(kw.get('conditionId', 0)),

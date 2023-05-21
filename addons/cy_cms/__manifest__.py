@@ -13,7 +13,7 @@
     """,
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
-    'depends': ['web', 'mail', 'cy_public', 'cy_product', 'web_notify'],
+    'depends': ['web', 'mail', 'cy_base', 'cy_product', 'web_notify'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

@@ -75,7 +75,7 @@ class Order(models.Model):
                 record.from_platform = ''
 
     def _usd_fee(self):
-        conv = self.env['cy.public']
+        conv = self.env['cy.base']
         for record in self:
             record.usd_insured_fee = conv.money_to_usd(record.insured_fee, record.currency, record.from_usd_rate)
             record.usd_shipping_fee = conv.money_to_usd(record.shipping_fee, record.currency, record.from_usd_rate)
@@ -85,7 +85,7 @@ class Order(models.Model):
             record.usd_payment_deduct = conv.money_to_usd(record.payment_deduct, record.currency, record.from_usd_rate)
 
     def _currency_fee(self):
-        conv = self.env['cy.public']
+        conv = self.env['cy.base']
         for record in self:
             record.currency_insured_fee = conv.money_int_to_float(record.insured_fee, record.currency)
             record.currency_shipping_fee = conv.money_int_to_float(record.shipping_fee, record.currency)
@@ -108,7 +108,7 @@ class PromotionRule(models.Model):
     coupon_code_id = fields.Integer(string='优惠券ID')
 
     def _usd_fee(self):
-        conv = self.env['cy.public']
+        conv = self.env['cy.base']
         for record in self:
             record.usd_deduct = conv.money_to_usd(record.deduct, record.order_id.currency, record.order_id.from_usd_rate)
             record.currency_deduct = conv.money_int_to_float(record.deduct, record.order_id.currency)
@@ -172,14 +172,14 @@ class OrderItem(models.Model):
     currency_total_promotion_deduct = fields.Float(string='总折扣金额', compute="_currency_fee")
 
     def _usd_fee(self):
-        conv = self.env['cy.public']
+        conv = self.env['cy.base']
         for record in self:
             record.usd_market_price = conv.money_to_usd(record.market_price, record.order_id.currency, record.order_id.from_usd_rate)
             record.usd_shop_price = conv.money_to_usd(record.shop_price, record.order_id.currency, record.order_id.from_usd_rate)
             record.usd_total_promotion_deduct = conv.money_to_usd(record.total_promotion_deduct, record.order_id.currency, record.order_id.from_usd_rate)
 
     def _currency_fee(self):
-        conv = self.env['cy.public']
+        conv = self.env['cy.base']
         for record in self:
             record.currency_market_price = conv.money_int_to_float(record.market_price, record.order_id.currency)
             record.currency_shop_price = conv.money_int_to_float(record.shop_price, record.order_id.currency)

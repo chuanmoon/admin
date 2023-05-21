@@ -54,7 +54,7 @@ var utils = {
         });
 
 
-        axios.get('/public/api_host', {}, { loading: true }).then((response) => {
+        axios.get('/base/api_host', {}, { loading: true }).then((response) => {
             var apiHost = response.data;
             // api_axios is api host
             window.api_axios = axios.create({ baseURL: '//' + apiHost })

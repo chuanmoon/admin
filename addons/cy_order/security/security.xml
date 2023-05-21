@@ -3,11 +3,11 @@
     <data>
         <record model="res.groups" id="cy_order_manager">
             <field name="name">订单管理员</field>
-            <field name="category_id" ref="cy_public.cy_mall" />
+            <field name="category_id" ref="cy_base.cy_mall" />
         </record>
         <record model="res.groups" id="cy_order_read">
             <field name="name">订单查看</field>
-            <field name="category_id" ref="cy_public.cy_mall" />
+            <field name="category_id" ref="cy_base.cy_mall" />
         </record>
     </data>
 </openerp>

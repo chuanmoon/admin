@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <menuitem id="menu_account" name="用户" parent="cy_public.cy_account_menu" sequence="1" />
+        <menuitem id="menu_account" name="用户" parent="cy_base.cy_account_menu" sequence="1" />
         <menuitem action="cy_account.action_user_group" id="menu_action_user_group" parent="cy_account.menu_account" sequence="100" />
         <menuitem action="cy_account.action_user" id="menu_action_user" parent="cy_account.menu_account" sequence="150" />
         <menuitem action="cy_account.action_mailing_list" id="menu_action_mailing_list" parent="cy_account.menu_account" sequence="200" />
 
-        <menuitem action="action_shipping_rule" id="menu_action_shipping_rule" parent="cy_public.menu_setting" sequence="800" />
-        <menuitem action="action_shipping" id="menu_action_shipping" parent="cy_public.menu_setting" sequence="900" />
-        <menuitem action="action_country" id="menu_action_country" parent="cy_public.menu_setting" sequence="100400" />
+        <menuitem action="action_shipping_rule" id="menu_action_shipping_rule" parent="cy_base.menu_setting" sequence="800" />
+        <menuitem action="action_shipping" id="menu_action_shipping" parent="cy_base.menu_setting" sequence="900" />
+        <menuitem action="action_country" id="menu_action_country" parent="cy_base.menu_setting" sequence="100400" />
     </data>
 </odoo>

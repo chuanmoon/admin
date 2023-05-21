@@ -4,11 +4,11 @@
 		<!-- Add you code here -->
 		<record id="cy_comment" model="res.groups">
 			<field name="name">评论管理</field>
-			<field name="category_id" ref="cy_public.cy_mall"/>
+			<field name="category_id" ref="cy_base.cy_mall"/>
 		</record>
 
 		<!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-		<menuitem id="comment_page_menu" name="评论列表" action="comment_page_action" parent="cy_public.cy_sale_menu" sequence="200"/>
-		<menuitem id="comment_statics_page_menu" name="评论统计" action="cy_product_comment_statics_action" parent="cy_public.cy_sale_menu" sequence="300"/>
+		<menuitem id="comment_page_menu" name="评论列表" action="comment_page_action" parent="cy_base.cy_sale_menu" sequence="200"/>
+		<menuitem id="comment_statics_page_menu" name="评论统计" action="cy_product_comment_statics_action" parent="cy_base.cy_sale_menu" sequence="300"/>
 	</data>
 </odoo>

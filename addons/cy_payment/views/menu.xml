@@ -2,6 +2,6 @@
 <odoo>
 	<data>
 		<!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-		<menuitem id="pay_channel_page_menu" name="支付渠道" action="payment_page_action" parent="cy_public.menu_setting" sequence="600"/>
+		<menuitem id="pay_channel_page_menu" name="支付渠道" action="payment_page_action" parent="cy_base.menu_setting" sequence="600"/>
 	</data>
 </odoo>

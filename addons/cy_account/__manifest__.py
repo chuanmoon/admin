@@ -8,7 +8,7 @@
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
     'depends': [
-            'cy_public', "web"
+            'cy_base', "web"
     ],
     'data': [
         'security/security.xml',

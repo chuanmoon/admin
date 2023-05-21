@@ -5,7 +5,7 @@
     'author': 'yinshuwei',
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
-    'depends': ['base', 'mail', 'web', 'cy_public'],
+    'depends': ['base', 'mail', 'web', 'cy_base'],
     'data': [
         'security/ir.model.access.csv',
         'views/channel.xml',

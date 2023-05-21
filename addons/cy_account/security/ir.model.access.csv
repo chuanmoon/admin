@@ -1,11 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_group_cy_user_group_account_manager,cy_user_group,cy_public.model_cy_user_group,cy_account.account_manager,1,1,1,0
+access_group_cy_user_group_account_manager,cy_user_group,cy_base.model_cy_user_group,cy_account.account_manager,1,1,1,0
 access_group_cy_region_account_manager,cy_region,model_cy_region,cy_account.account_manager,1,0,0,0
 access_group_cy_mailing_list_account_manager,cy_mailing_list,model_cy_mailing_list,cy_account.account_manager,1,0,0,0
 
-access_group_cy_shipping_sys_manager,cy_shipping,model_cy_shipping,cy_public.sys_manager,1,1,1,0
-access_group_cy_shipping_rule_sys_manager,cy_shipping_rule,model_cy_shipping_rule,cy_public.sys_manager,1,1,1,0
-access_group_cy_shipping_rule_item_sys_manager,cy_shipping_rule_item,model_cy_shipping_rule_item,cy_public.sys_manager,1,1,1,1
+access_group_cy_shipping_sys_manager,cy_shipping,model_cy_shipping,cy_base.sys_manager,1,1,1,0
+access_group_cy_shipping_rule_sys_manager,cy_shipping_rule,model_cy_shipping_rule,cy_base.sys_manager,1,1,1,0
+access_group_cy_shipping_rule_item_sys_manager,cy_shipping_rule_item,model_cy_shipping_rule_item,cy_base.sys_manager,1,1,1,1
 
-access_group_cy_country_sys_manager,cy_country,model_cy_country,cy_public.sys_manager,1,0,0,0
-access_group_cy_region_sys_manager,cy_region,model_cy_region,cy_public.sys_manager,1,0,0,0
+access_group_cy_country_sys_manager,cy_country,model_cy_country,cy_base.sys_manager,1,0,0,0
+access_group_cy_region_sys_manager,cy_region,model_cy_region,cy_base.sys_manager,1,0,0,0
