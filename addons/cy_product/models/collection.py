@@ -6,32 +6,29 @@ def default_end_time(*args):
     return "9999-12-30 00:00:00"
 
 
-class Condition(models.Model):
-    ''' cy_cms_condition 商品表达式'''
-    _name = 'cy.cms.condition'
+class Collection(models.Model):
+    ''' cy_cms_collection 产品系列'''
+    _name = 'cy.cms.collection'
     _inherit = 'cy.mail.thread'
-    _description = '''
-        商品表达式
-    '''
+    _description = '''产品系列'''
 
     name = fields.Char(string="表达式名称", required=True, size=31)
     condition = fields.Text(string="表达式", required=True)
     active = fields.Boolean(string="是否有效", default=True)
     order_type = fields.Selection(selection=[("sellingScore", "Hot"), ("newScore", "New")], default="sellingScore", size=31)
-
-    banners = fields.One2many('cy.cms.condition.banner', 'condition_id', string="banner配置")
+    banners = fields.One2many('cy.cms.collection.banner', 'collection_id', string="banner配置")
     top_product = fields.Text(string='置顶商品', default='')
 
-    def action_release_condition(self):
+    def action_release_collection(self):
         inside_gateway_link = tools.config.get('inside_gateway_link', 'http://172.17.0.1:9000/gateway')
         for record in self:
             bizContent = {
-                'conditionId': record.id,
+                'collectionId': record.id,
             }
             data = {
                 'module': 'cms',
                 'version': '2.0',
-                'method': 'CmsApi.ReloadCondition',
+                'method': 'CmsApi.ReloadCollection',
                 'bizContent': json.dumps(bizContent)
             }
             result = self.env['cy.base'].request_has_sign(inside_gateway_link, data)
@@ -44,22 +41,22 @@ class Condition(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        result = super(Condition, self).create(vals_list)
+        result = super(Collection, self).create(vals_list)
         for record in result:
             self.env['cy.action'].sync_action(record.name, 'collection', str(record.id))
         return result
 
     def write(self, vals):
-        result = super(Condition, self).write(vals)
+        result = super(Collection, self).write(vals)
         for record in self:
             self.env['cy.action'].sync_action(record.name, 'collection', str(record.id))
         return result
 
 
-class ConditionBanner(models.Model):
-    _name = 'cy.cms.condition.banner'
+class CollectionBanner(models.Model):
+    _name = 'cy.cms.collection.banner'
 
-    condition_id = fields.Many2one('cy.cms.condition', string='商品集合')
+    collection_id = fields.Many2one('cy.cms.collection', string='商品集合')
     images = fields.Char(string="图片", required=True, size=1000)
 
     start_time = fields.Datetime(string='开始时间', default=fields.Datetime.now, required=True)

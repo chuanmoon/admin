@@ -8,7 +8,7 @@
 			<field name="arch" type="xml">
 				<search string="商品分类">
 					<!-- Add your fields here -->
-					<field name="full_name" string="名称" filter_domain="['|', ('full_name', 'ilike', self), ('display_full_name', 'ilike', self)]" />
+					<field name="full_name" string="名称" filter_domain="['|', ('full_name', 'ilike', self), ('full_name_en', 'ilike', self)]" />
 					<searchpanel>
 						<field name="parent_id" color="#875A7B" enable_counters="1" />
 					</searchpanel>
@@ -25,18 +25,15 @@
 						<group>
 							<!-- Add your fields here -->
 							<field name="name" />
-							<field name="code" />
-							<field name="display_name" />
+							<field name="name_en" />
 							<field name="active" />
 							<field name="parent_id" />
-							<field name="size_image" widget="cy_image_field" />
 						</group>
 						<notebook>
 							<page string="子分类">
 								<field name="children">
-									<field name="code" />
 									<field name="full_name" />
-									<field name="display_full_name" />
+									<field name="full_name_en" />
 								</field>
 							</page>
 						</notebook>
@@ -58,13 +55,11 @@
 					<!-- Add your fields here -->
 					<field name="sequence" widget="handle" />
 					<field name="id" />
-					<field name="code" />
 					<field name="name" />
-					<field name="display_name" />
+					<field name="name_en" />
 					<field name="active" />
 					<field name="full_name" />
-					<field name="display_full_name" />
-					<field name="size_image" widget="cy_image_field"/>
+					<field name="full_name_en" />
 				</tree>
 			</field>
 		</record>

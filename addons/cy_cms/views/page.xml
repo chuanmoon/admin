@@ -47,7 +47,7 @@
                                                 <field name="indicator_style" widget="radio" options="{'horizontal': true}" attrs="{'invisible': [('item_type', '!=', 'rotation_image')]}" />
                                                 <field name="screen_count" attrs="{'invisible': [('item_type', '!=', 'slide_image')]}" />
                                                 <field name="flash_sale_id" attrs="{'invisible': [('item_type', '!=', 'flash_sale')]}" />
-                                                <field name="condition_id" attrs="{'invisible': [('item_type', '!=', 'slide_products'),('item_type', '!=', 'column2_products')]}" />
+                                                <field name="collection_id" attrs="{'invisible': [('item_type', '!=', 'slide_products'),('item_type', '!=', 'column2_products')]}" />
                                                 <field name="product_count" attrs="{'invisible': [('item_type', '!=', 'slide_products'),('item_type', '!=', 'column2_products')]}" />
                                             </group>
                                             <group>
@@ -99,7 +99,7 @@
                                         <field name="start_time" />
                                         <field name="end_time" />
                                         <field name="is_show" />
-                                        <field name="condition_id" />
+                                        <field name="collection_id" />
                                         <field name="create_date" optional="hide" />
                                         <field name="write_date" optional="hide" />
                                         <field name="create_uid" optional="hide" />
@@ -116,7 +116,7 @@
                                             </group>
                                             <group>
                                                 <field name="end_time" />
-                                                <field name="condition_id" />
+                                                <field name="collection_id" />
                                             </group>
                                         </group>
                                     </form>

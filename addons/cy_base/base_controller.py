@@ -187,14 +187,14 @@ class BaseController(http.Controller):
         }
         return json.dumps(data)
 
-    @http.route('/base/condition-skcs', auth='user', csrf=False)
-    def condition_skc(self, req, **kw):
+    @http.route('/base/collection-skcs', auth='user', csrf=False)
+    def collection_skc(self, req, **kw):
         body = {
-            'conditionId': int(kw.get('conditionId', 0)),
+            'collectionId': int(kw.get('collectionId', 0)),
             'page': int(kw.get('page', 1)),
             'size': 100
         }
         _logger.info(body)
         inside_gateway_link = tools.config.get('inside_gateway_link', 'http://172.17.0.1:9000/gateway')
-        x = requests.post(inside_gateway_link+'/r/m/product_2.0_ProductApi.ConditionSkcs', json=body)
+        x = requests.post(inside_gateway_link+'/r/m/product_2.0_ProductApi.CollectionSkcs', json=body)
         return x.text

@@ -40,7 +40,7 @@
                                 ('promotion_type', '!=', 'product_qty_discount_rate'),
                                 ('promotion_type', '!=', 'product_qty_discount_to_amount')
                             ]}"/>
-                                <field name="condition_id" attrs="{'invisible': [
+                                <field name="collection_id" attrs="{'invisible': [
                                 ('promotion_type', '!=', 'product_amount_discount_amount'),
                                 ('promotion_type', '!=', 'product_amount_discount_rate'),
                                 ('promotion_type', '!=', 'product_qty_discount_amount'),
@@ -85,7 +85,7 @@
                     <field name="promotion_type" />
                     <field name="amount" />
                     <field name="qty" />
-                    <field name="condition_id" />
+                    <field name="collection_id" />
                     <field name="discount_amount" />
                     <field name="discount_rate" />
                     <field name="is_auto_apply" />
@@ -109,7 +109,7 @@
                     <field name="promotion_type" />
                     <field name="amount" />
                     <field name="qty" />
-                    <field name="condition_id" />
+                    <field name="collection_id" />
                     <field name="discount_amount" />
                     <field name="discount_rate" />
                     <field name="is_auto_apply" />

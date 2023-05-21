@@ -524,7 +524,7 @@ odoo.define('cy_base.widgets', function (require) {
                 var self = this
                 var container = this.$el.find(".product-table-pagination")
                 container.pagination({
-                    dataSource: "/base/condition-skcs",
+                    dataSource: "/base/collection-skcs",
                     pageSize: 100,
                     locator: "data.list",
                     totalNumberLocator: function (response) {
@@ -542,7 +542,7 @@ odoo.define('cy_base.widgets', function (require) {
                         type: "POST",
                         dataType: "json",
                         data: {
-                            "conditionId": self.value,
+                            "collectionId": self.value,
                         },
                     },
                     alias: {

@@ -51,7 +51,7 @@ class Promotion(models.Model):
     priority = fields.Integer(string='优先级', compute='_compute_priority', store=True, index=True)
     amount = fields.Float(string='条件金额(USD)', tracking=True, default=2000)
     qty = fields.Integer(string='条件数量', tracking=True, default=0)
-    condition_id = fields.Many2one('cy.cms.condition', tracking=True, string='条件商品集合', index=True)
+    collection_id = fields.Many2one('cy.cms.collection', tracking=True, string='条件商品集合', index=True)
     discount_amount = fields.Float(string='金额(USD)', tracking=True, default=0)
     discount_rate = fields.Integer(string='折扣(如9折输入90)', tracking=True, default=100)
     is_auto_apply = fields.Boolean(string='是否自动应用', tracking=True, default=False)
