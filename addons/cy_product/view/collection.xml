@@ -1,19 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<!-- Add you code here -->
-		<!-- cy.goods.collection form view -->
 		<record id="model_name_view_form" model="ir.ui.view">
 			<field name="name">cy.goods.collection.view.form</field>
 			<field name="model">cy.goods.collection</field>
 			<field name="arch" type="xml">
 				<form>
 					<sheet>
-						<div class="pull-right">
-							<button name="action_release_collection" type="object" confirm="发布后2分钟内会对用户生效！确认发布？" string="发布当前配置" class="oe_highlight oe_read_only" style="margin-left: 12px;" />
-						</div>
 						<group>
-							<!-- Add your fields here -->
 							<group>
 								<field name="name" />
 								<field name="order_type"/>
@@ -67,7 +61,6 @@
 			<field name="model">cy.goods.collection</field>
 			<field name="arch" type="xml">
 				<tree>
-					<!-- Add your fields here -->
 					<field name="id" />
 					<field name="name" />
 				</tree>

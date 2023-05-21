@@ -11,11 +11,13 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'view/category_variant.xml',
+        'view/category_attr.xml',
+        'view/category.xml',
         'view/spu.xml',
         'view/sku.xml',
         'view/collection.xml',
         'view/search.xml',
-        'view/category.xml',
         'view/menu.xml'
     ],
     'sequence': 1,

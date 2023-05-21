@@ -42,7 +42,6 @@ class ProductCategoryAttr(models.Model):
     _order = 'sequence'
 
     name = fields.Char(string="属性名称", size=255)
-    sequence = fields.Integer(string="排序", index=True)
     active = fields.Boolean(string='是否有效', default=True, tracking=True)
 
 class ProductCategoryAttrRel(models.Model):

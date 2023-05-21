@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<record id="cy_product_category_attr_view_form" model="ir.ui.view">
+			<field name="name">cy.product.category.attr.view.form</field>
+			<field name="model">cy.product.category.attr</field>
+			<field name="arch" type="xml">
+				<form string="品类普通属性定义">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="active" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="cy_product_category_attr_view_tree" model="ir.ui.view">
+			<field name="name">cy.product.category.attr.view.tree</field>
+			<field name="model">cy.product.category.attr</field>
+			<field name="arch" type="xml">
+				<tree string="品类普通属性定义">
+					<field name="name" />
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+		<record id="cy_product_category_attr_view_search" model="ir.ui.view">
+			<field name="name">cy.product.category.attr.view.search</field>
+			<field name="model">cy.product.category.attr</field>
+			<field name="arch" type="xml">
+				<search string="品类普通属性定义">
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+		<record id="cy_product_category_attr_action" model="ir.actions.act_window">
+			<field name="name">品类普通属性定义</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cy.product.category.attr</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>
