@@ -5,3 +5,4 @@ conf/
 addons/web_enterprise/
 *.pyc
 run.sh
+.env

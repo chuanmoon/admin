@@ -2,7 +2,6 @@
     'name': 'CY Account',
     'version': '1.0.0',
     'summary': '用户账户',
-    'category': '商城',
     'author': 'chuanmoon',
     'maintainer': 'yinshuwei',
     'website': "https://chuanmoon.com/",

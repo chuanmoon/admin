@@ -3,7 +3,7 @@
     <data>
         <template id="assets_backend" name="cy_base_assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/cy_base/static/src/css/public.css" />
+                <link rel="stylesheet" href="/cy_base/static/src/css/base.css" />
                 <link rel="stylesheet" href="/cy_base/static/src/css/qbuilder.css" />
                 <link rel="stylesheet" href="/cy_base/static/src/css/pagination.css" />
                 <!-- <script type="text/javascript" src="/cy_base/static/src/js/ajaxfileupload.js" /> -->

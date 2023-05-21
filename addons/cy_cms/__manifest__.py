@@ -4,7 +4,6 @@
     'name': 'CY Cms',
     'version': '1.0',
     'summary': 'chuanmoon cms',
-    'sequence': 1,
     'author': 'chuanmoon',
     'description': """
         chuanmoon cms
@@ -13,7 +12,7 @@
     """,
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
-    'depends': ['web', 'mail', 'cy_base', 'cy_product', 'web_notify'],
+    'depends': ['web', 'mail', 'cy_base', 'cy_product'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
