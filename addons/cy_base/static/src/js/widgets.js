@@ -1,3 +1,4 @@
+const placeholderPng = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAAAAACPAi4CAAAACXZwQWcAAABAAAAAQADq8/hgAAAEWklEQVRYw9WX6XKjRhCAef8HiySQvGt5vfZuEselOUAcEpe4GdI9MAgQOjb5k3SVyzY1801PX9OtNf9StP80QJR5miRpXtb/AFCnvmMySgmhlJn2Mal+BSBSj1NCGeNSGAMOd0/iQYCI95TAXnm+FCr/I2ZYPwJILEJhPaGm7flBFIW+Z5sUvwEivguovG7pMR0cV2e+BbYArF3cBqQclKfEvryvSB2KaHa6BYhgDSP7ZN7gmUNQCf86wCdgcBaKq04/cTzAuwbA/czKb8VdZYMSI8IAEOJ+XjTiFkF4SDjOARIIHLiBK+4E/xHOIdEloMSAAwZx7hEOBKIquwA4lFPbR/3uEhzCqSUmgBiwrGgeIlQm5b0zO0CN3yKw34QgQC4JKZqrGAFC0MpWvuwJ3V6hWD3BI5wchoDaBAumzYQgmsrd7ewZx5bosHIAAAtQp4+nXUuA+2yXy9Xyi4OsIorjauBLZQWtd0Gqrt3EvCXQlb4BMZYfsPP7cr0gvS4FaNw6Qus0ovtez8DZcYyHt8Wmk9XWdF+Mjf570Ke4q46UgAgUCtX55mKl/wSbsD83hrEE0VGJ1RrEWHz2aaXuIAEe7b3SNG/601oSzL/W20/T2r2uDNACARvjWelZQTTaCiCg2vSR1bzrsFgSQMk8SbPi8FWX+0GFbX2OXMarDoAmOGfo+wpXt7cwj4Hv+1n+rSMYW3HOfS4TAgHZIDIVYG38wNzchyB+kj4ZUwB4npw6ABokmgA2qz9kfbIkoWDLzQSQ0tbw2gA20kA/nmyqCHG8nmqQd2prbSKQZAIwnk5B5PSE/EWfACCUZGFSgHQKeE6DsCcExfc5wKEDRLMaJHBwTwA/zFzhOLBBPGODoCfEyYUb0XVBB1AGHXvho/SVDsSjF15QrtMG1xlpsDbCrCewj7UxAWAJSjsAlJOuHI0AX9Mi8IMgsJnMC2MMOJA2f7RhXI8AG/2LVxZZVlQWmKElnAFiT5nMH62L67Mb3lTmbIzVK3Uc9r6GvJAEyMa6d0KXP1oXliqbRPPzN0NvBcrBAmSpr37wlrB8GeRS6zkJECZVNRKeuLfty1C+wc/zp7TD9jVQN7DUDq2vkUEzfAymIl9uZ5iL1B0U1Rw7surmc4SE/sUBE3KaDB8Wd1QS7hJQga4Kayow2aAsXiV0L458HE/jx9UbPi33CIf+ITwDSnxM/IcIcAGIrHzaH+BX8Ky4awdq41nBZYsjG4/kEQLjg9Q5A9A1jJ7u3CJEa1OzmuvSKgubwPA24IT7WT7fJ5YmEtwbASWO2AkP94871WpPOCc8vmYHaORhv5lf75VrV3bD+9nZIrUJamhXN9v9kMlu3wonYVlGe9msU1/cGTgKpx0YmO2fsrKq66rMk8Bh7dd99sDIk+xxxsE5icqhqfsLflkz1pkbukSCBzI5bqG0EGrPGvfK2FeGDseRi1I5eVFuB8WvDp51FvsH13Fcz4+y6n86Oz8kfwPMD02INEiadQAAAABJRU5ErkJggg==";
 odoo.define('cy_base.widgets', function (require) {
     "use strict";
 
@@ -149,7 +150,7 @@ odoo.define('cy_base.widgets', function (require) {
                         .attr('data-source', imageUrl(imageSrc));
                 }
             } else {
-                self.$("img").attr("src", "https://img.your_domin.com/static/placeholder.png");
+                self.$("img").attr("src", placeholderPng);
             }
             if (self.mode == 'edit') {
                 self.$(".cy_image_field").css("border", "1px solid #CCC").css("padding", "4px");
@@ -274,7 +275,7 @@ odoo.define('cy_base.widgets', function (require) {
                 }
                 self.$(".cy_images_field_content").html(html);
             } else {
-                self.$(".cy_images_field_content").html('<div><img src="https://img.your_domin.com/static/placeholder.png"></img></div>');
+                self.$(".cy_images_field_content").html('<div><img src="'+placeholderPng+'"></img></div>');
             }
         },
         uploadOk: function (url) {
@@ -906,7 +907,7 @@ odoo.define('cy_base.widgets', function (require) {
 });
 
 $(function () {
-    $('body').append('<div class="cy_image_marker"><img src="https://img.your_domin.com/static/placeholder.png"></img></div><svg id="cy_image_field_list_image_arraw"><path d="M0 15 L30 0 L30 30 Z"/></path></svg><div id="cy_image_field_list_image_tips"><img src="https://img.your_domin.com/static/placeholder.png"></img></div>');
+    $('body').append('<div class="cy_image_marker"><img src="'+placeholderPng+'"></img></div>');
     var listMouseoverY = 0;
     var listOrgImage = null;
     $(document).on('mouseover', '.cy_image_field_list_image', function (e) {
