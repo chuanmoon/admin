@@ -20,6 +20,19 @@
 						<notebook>
 							<page string="子分类">
 								<field name="children">
+									<tree>
+										<field name="sequence" widget="handle" />
+										<field name="id" />
+										<field name="name" />
+										<field name="active" />
+										<field name="full_name" />
+									</tree>
+									<form>
+										<group>
+											<field name="name" />
+											<field name="active" />
+										</group>
+									</form>
 								</field>
 							</page>
 							<page string="变体属性">

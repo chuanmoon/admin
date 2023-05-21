@@ -12,7 +12,7 @@ class Spu(models.Model):
 
     category_id = fields.Many2one('cy.product.category', string="分类", index=True)
     spu_sn = fields.Char(string="SPU SN", size=31)
-    skus = fields.One2many('cy.product.sku', 'spu_id', string='sku列表')
+    skus = fields.One2many('cy.product.sku', 'spu_id', string='SKU列表')
     sku_count = fields.Integer(compute="_compute_sku_count", store=False, string="sku数量")
     active = fields.Boolean(string="是否有效", default=True, tracking=True, index=True)
 

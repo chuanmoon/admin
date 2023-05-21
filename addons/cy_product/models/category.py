@@ -12,7 +12,7 @@ class ProductCategory(models.Model):
     full_name = fields.Char(compute="_full_name", string="全称", store=False, size=255)
     parent_id = fields.Many2one('cy.product.category', index=True, string="父级别", ondelete='cascade')
     children = fields.One2many('cy.product.category', 'parent_id', string='子分类')
-    is_show_variant_inlist = fields.Boolean(string='是否在列表页显示第一层变体', default=False, tracking=True)
+    is_show_variant_inlist = fields.Boolean(string='商品列表显示变体', default=False, tracking=True, help="商品列表显示第一级变体，比如：颜色")
     sequence = fields.Integer(string="排序", tracking=True)
     active = fields.Boolean(string='是否有效', default=True, tracking=True)
     variants = fields.One2many('cy.product.category.variant.rel', 'category_id', string="变体属性列表")
