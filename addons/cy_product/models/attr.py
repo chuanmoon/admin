@@ -39,7 +39,6 @@ class ProductCategoryAttr(models.Model):
     ''' cy_product_category_attr 品类普通属性定义 '''
     _name = 'cy.product.category.attr'
     _description = '''品类普通属性定义'''
-    _order = 'sequence'
 
     name = fields.Char(string="属性名称", size=255)
     active = fields.Boolean(string='是否有效', default=True, tracking=True)

@@ -1,20 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 	<data>
-		<!-- cy.product.category search view -->
-		<record id="cy_product_category_view_search" model="ir.ui.view">
-			<field name="name">cy.product.category.view.search</field>
-			<field name="model">cy.product.category</field>
-			<field name="arch" type="xml">
-				<search string="商品分类">
-					<field name="full_name" string="名称" filter_domain="[('full_name', 'ilike', self)]" />
-					<searchpanel>
-						<field name="parent_id" color="#875A7B" enable_counters="1" />
-					</searchpanel>
-				</search>
-			</field>
-		</record>
-		<!-- cy.product.category form view -->
 		<record id="cy_product_category_view_form" model="ir.ui.view">
 			<field name="name">cy.product.category.view.form</field>
 			<field name="model">cy.product.category</field>
@@ -22,15 +8,34 @@
 				<form string="商品分类">
 					<sheet>
 						<group>
-							<!-- Add your fields here -->
-							<field name="name" />
-							<field name="active" />
-							<field name="parent_id" />
+							<group>
+								<field name="name" />
+								<field name="active" />
+							</group>
+							<group>
+								<field name="parent_id" />
+								<field name="is_show_variant_inlist" />
+							</group>
 						</group>
 						<notebook>
 							<page string="子分类">
 								<field name="children">
-									<field name="full_name" />
+								</field>
+							</page>
+							<page string="变体属性">
+								<field name="variants">
+									<tree editable="True">
+										<field name="sequence" widget="handle" />
+										<field name="variant_id" />
+									</tree>
+								</field>
+							</page>
+							<page string="普通属性">
+								<field name="attrs">
+									<tree editable="True">
+										<field name="sequence" widget="handle" />
+										<field name="attr_id" />
+									</tree>
 								</field>
 							</page>
 						</notebook>
@@ -42,20 +47,31 @@
 				</form>
 			</field>
 		</record>
-
-		<!-- cy.product.category tree view -->
 		<record id="cy_product_category_view_tree" model="ir.ui.view">
 			<field name="name">cy.product.category.view.tree</field>
 			<field name="model">cy.product.category</field>
 			<field name="arch" type="xml">
 				<tree>
-					<!-- Add your fields here -->
 					<field name="sequence" widget="handle" />
 					<field name="id" />
 					<field name="name" />
 					<field name="active" />
 					<field name="full_name" />
+					<field name="parent_id" />
+					<field name="is_show_variant_inlist" />
 				</tree>
+			</field>
+		</record>
+		<record id="cy_product_category_view_search" model="ir.ui.view">
+			<field name="name">cy.product.category.view.search</field>
+			<field name="model">cy.product.category</field>
+			<field name="arch" type="xml">
+				<search string="商品分类">
+					<field name="full_name" string="名称" filter_domain="[('full_name', 'ilike', self)]" />
+					<searchpanel>
+						<field name="parent_id" color="#875A7B" enable_counters="1" />
+					</searchpanel>
+				</search>
 			</field>
 		</record>
 		<record id="cy_product_category_action" model="ir.actions.act_window">
