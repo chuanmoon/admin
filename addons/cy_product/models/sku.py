@@ -64,7 +64,6 @@ class ProductAttr(models.Model):
     ''' cy_product_attr 商品常规属性 '''
     _name = 'cy.product.attr'
     _description = '''商品常规属性'''
-    _order = 'sequence'
 
     sku_id = fields.Many2one('cy.product.sku', string='商品SKU', ondelete="cascade", index=True)
     attr_id = fields.Many2one('cy.product.category.attr', string="属性", index=True)
