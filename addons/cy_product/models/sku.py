@@ -20,7 +20,7 @@ class Sku(models.Model):
     weight = fields.Float(string='重量(克)')
     volume = fields.Float(string='体积(平方厘米)')
     active = fields.Boolean(string="是否生效", default=True, tracking=True, index=True)
-    limit_qty = fields.Integer(string="购买上限数量(0 不限购)", default=1000)
+    limit_qty = fields.Integer(string="购买上限数量(0 不限购)", default=0)
     last_publish_time = fields.Datetime(string='最新上架时间')
     first_publish_time = fields.Datetime(string='首次上架时间')
 
