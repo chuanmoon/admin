@@ -11,8 +11,9 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'view/product_spu.xml',
-        'view/product_sku.xml',
+        'view/spu.xml',
+        'view/sku.xml',
+        'view/collection.xml',
         'view/search.xml',
         'view/category.xml',
         'view/menu.xml'

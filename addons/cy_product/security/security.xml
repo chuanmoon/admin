@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<openerp>
+<odoo>
     <data>
         <record model="res.groups" id="product_manager">
             <field name="name">商品管理</field>
             <field name="category_id" ref="cy_base.cy_mall" />
         </record>
     </data>
-</openerp>
+</odoo>

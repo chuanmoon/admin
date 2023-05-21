@@ -2,10 +2,10 @@
 <odoo>
 	<data>
 		<!-- Add you code here -->
-		<!-- cy.cms.collection form view -->
+		<!-- cy.goods.collection form view -->
 		<record id="model_name_view_form" model="ir.ui.view">
-			<field name="name">cy.cms.collection.view.form</field>
-			<field name="model">cy.cms.collection</field>
+			<field name="name">cy.goods.collection.view.form</field>
+			<field name="model">cy.goods.collection</field>
 			<field name="arch" type="xml">
 				<form>
 					<sheet>
@@ -61,10 +61,10 @@
 				</form>
 			</field>
 		</record>
-		<!-- cy.cms.collection tree view -->
-		<record id="cy_cms_collection_view_tree" model="ir.ui.view">
-			<field name="name">cy.cms.collection.view.tree</field>
-			<field name="model">cy.cms.collection</field>
+		<!-- cy.goods.collection tree view -->
+		<record id="cy_goods_collection_view_tree" model="ir.ui.view">
+			<field name="name">cy.goods.collection.view.tree</field>
+			<field name="model">cy.goods.collection</field>
 			<field name="arch" type="xml">
 				<tree>
 					<!-- Add your fields here -->
@@ -75,8 +75,8 @@
 		</record>
 
 		<record id="view_cms_collection_filter" model="ir.ui.view">
-			<field name="name">cy.cms.collection.filter</field>
-			<field name="model">cy.cms.collection</field>
+			<field name="name">cy.goods.collection.filter</field>
+			<field name="model">cy.goods.collection</field>
 			<field name="arch" type="xml">
 				<search string="分享设置">
 					<field name="name" />
@@ -85,9 +85,9 @@
 			</field>
 		</record>
 
-		<record id="cy_cms_collection_action" model="ir.actions.act_window">
-			<field name="name">商品集合</field>
-			<field name="res_model">cy.cms.collection</field>
+		<record id="cy_goods_collection_action" model="ir.actions.act_window">
+			<field name="name">商品系列</field>
+			<field name="res_model">cy.goods.collection</field>
 			<field name="view_mode">tree,form</field>
 			<field name="context">{}</field>
 			<field name="search_view_id" ref="view_cms_collection_filter" />

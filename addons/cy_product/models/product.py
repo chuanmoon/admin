@@ -1,6 +1,7 @@
 from odoo import fields, models, api
 
 class Spu(models.Model):
+    ''' cy_product_spu 商品SPU '''
     _name = 'cy.product.spu'
     _rec_name = "spu_sn"
     _inherit = 'cy.mail.thread'
@@ -29,6 +30,7 @@ class Spu(models.Model):
 
 
 class Sku(models.Model):
+    ''' cy_product_sku 商品SKU '''
     _name = 'cy.product.sku'
     _rec_name = "sku_sn"
     _inherit = 'cy.mail.thread'
@@ -63,6 +65,7 @@ class Sku(models.Model):
         return result
 
 class ProductStock(models.Model):
+    ''' cy_product_stock 商品库存 '''
     _name = 'cy.product.stock'
     _description = '''商品库存'''
     _inherit = 'cy.mail.thread'
@@ -73,24 +76,27 @@ class ProductStock(models.Model):
     stock = fields.Integer(string='库存数量', tracking=True)
 
 class ProductVariant(models.Model):
+    ''' cy_product_variant 商品变体属性 '''
     _name = 'cy.product.variant'
     _description = '''商品变体属性'''
 
     sku_id = fields.Many2one('cy.product.sku', string='商品SKU', ondelete="cascade", index=True)
     variant_id = fields.Many2one('cy.product.category.variant', string="变体属性", index=True)
     variant_value_id = fields.Many2one('cy.product.category.variant.value', string="变体属性值", index=True)
+    variant_image_url = fields.Char(string="变体小图片", size=255, help="变体属性值对应的小图片, 覆盖公用图片, 只有当前商品列表和详情页展示")
 
 class ProductAttr(models.Model):
+    ''' cy_product_attr 商品常规属性 '''
     _name = 'cy.product.attr'
     _description = '''商品常规属性'''
     _order = 'sequence'
 
     sku_id = fields.Many2one('cy.product.sku', string='商品SKU', ondelete="cascade", index=True)
-    attr_name = fields.Char(string="属性名称", size=63)
-    attr_value = fields.Char(string="属性值", size=63)
-    sequence = fields.Integer(string="排序", default=0, index=True)
+    attr_id = fields.Many2one('cy.product.category.attr', string="属性", index=True)
+    attr_value = fields.Char(string="属性值", size=255)
 
 class ProductDetail(models.Model):
+    ''' cy_product_detail 商品详情 '''
     _name = 'cy.product.detail'
     _description = '''商品详情'''
 

@@ -11,9 +11,8 @@
         <menuitem id="menu_action_nav" parent="cy_cms.menu_nav" action="action_nav" sequence="300" />
         <menuitem id="menu_action_nav_bottom" parent="cy_cms.menu_nav" action="action_nav_bottom" sequence="500" />
 
-        <menuitem id="collection_page" name="商品集合" parent="cy_base.cy_operate_menu" sequence="3" />
+        <menuitem id="collection_page" name="商品系列" parent="cy_base.cy_operate_menu" sequence="3" />
         <menuitem id="flashsale_list_page" name="闪购列表" parent="cy_cms.collection_page" action="cy_cms_flashsale_action" sequence="200" />
-        <menuitem id="conditon_list_page" name="商品集合列表" parent="cy_cms.collection_page" action="cy_cms_collection_action" sequence="100" />
         <menuitem id="cms_page_banner" name="页面顶部广告" parent="cy_cms.collection_page" action="cy_cms_page_banner_action" sequence="300" />
 
         <menuitem action="action_setting" id="menu_action_setting" parent="cy_base.menu_setting" sequence="1900" />

@@ -20,7 +20,6 @@
         'views/home.xml',
         'views/nav_bottom.xml',
         'views/nav.xml',
-        'views/collection.xml',
         'views/flashsale.xml',
         'views/popup.xml',
         'views/setting.xml',

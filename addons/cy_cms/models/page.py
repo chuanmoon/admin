@@ -58,7 +58,7 @@ class PageWaterfallTab(models.Model):
 
     name = fields.Char(string='名称', size=63, required=True)
     page_id = fields.Many2one('cy.page', string='页面', index=True)
-    collection_id = fields.Many2one('cy.cms.collection', string='商品集合', index=True)
+    collection_id = fields.Many2one('cy.goods.collection', string='商品系列', index=True)
 
 
 class PageItem(models.Model):
@@ -82,7 +82,7 @@ class PageItem(models.Model):
     screen_count = fields.Float(string='每屏显示图片张数', default=2.2)
     indicator_style = fields.Selection([('in_image', '在图片上的'), ('out_image', '在图片外的'), ('none', '没有指示器')], string='轮播图指示器样式', default='none', size=31)
     flash_sale_id = fields.Many2one('cy.cms.flashsale', string='闪购', index=True)
-    collection_id = fields.Many2one('cy.cms.collection', string='商品集合', index=True)
+    collection_id = fields.Many2one('cy.goods.collection', string='商品系列', index=True)
     images = fields.One2many('cy.page.item.image', 'item_id', string='图片列表')
     images_text = fields.Char(compute='_compute_images_text', store=False, string='图片列表')
     images_text_pc = fields.Char(compute='_compute_images_text', store=False, string='图片列表PC')
