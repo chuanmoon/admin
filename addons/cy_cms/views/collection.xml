@@ -23,8 +23,8 @@
 							</group>
 						</group>
 						<notebook>
-							<page name="collection" string="表达式">
-								<field name="collection" widget="cy_query_builder" />
+							<page name="condition" string="表达式">
+								<field name="condition" widget="cy_query_builder" />
 							</page>
 							<page name="置顶商品货号" string="置顶商品货号">
 								<field name="top_product"/>

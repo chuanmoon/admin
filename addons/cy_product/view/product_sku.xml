@@ -9,8 +9,7 @@
 			<field name="arch" type="xml">
 				<form string="商品SKU">
 					<sheet>
-						<group>
-							<!-- Add your fields here -->
+						<!-- <group>
 							<field name="sku_sn" readonly="True"/>
 							<field name="skc_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True}"/>
 							<field name="spu_id" readonly="True"/>
@@ -30,7 +29,7 @@
 									</tree>
 								</field>
 							</page>
-						</notebook>
+						</notebook> -->
 					</sheet>
 					<div class="oe_chatter">
 						<field name="message_follower_ids" widget="mail_followers" />
@@ -45,13 +44,12 @@
 			<field name="model">cy.product.sku</field>
 			<field name="arch" type="xml">
 				<tree>
-					<!-- Add your fields here -->
-					<field name="id" />
+					<!-- <field name="id" />
 					<field name="sku_sn" />
 					<field name="skc_id" />
 					<field name="spu_id" />
 					<field name="size_id" />
-					<field name="active" />
+					<field name="active" /> -->
 				</tree>
 			</field>
 		</record>
@@ -61,11 +59,11 @@
 			<field name="model">cy.product.sku</field>
 			<field name="arch" type="xml">
 				<search string="search">
-					<field name="id" />
+					<!-- <field name="id" />
 					<field name="sku_sn" />
 					<field name="skc_id" />
 					<field name="spu_id" />
-					<field name="size_id" />
+					<field name="size_id" /> -->
 				</search>
 			</field>
 		</record>

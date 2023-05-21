@@ -9,7 +9,7 @@
 			<field name="arch" type="xml">
 				<form string="商品">
 					<sheet>
-						<group>
+						<!-- <group>
 							<field name="spu_sn" readonly="True"/>
 							<field name="category_id" options="{'no_create': True, 'no_create_edit':True,'no_quick_create':True,'no_open':True}" />
 							<field name="active" />
@@ -26,7 +26,7 @@
 									</tree>
 								</field>
 							</page>
-						</notebook>
+						</notebook> -->
 					</sheet>
 					<div class="oe_chatter">
 						<field name="message_follower_ids" widget="mail_followers" />
@@ -41,11 +41,10 @@
 			<field name="model">cy.product.spu</field>
 			<field name="arch" type="xml">
 				<tree>
-					<!-- Add your fields here -->
-					<field name="id" />
+					<!-- <field name="id" />
 					<field name="spu_sn" />
 					<field name="category_id" />
-					<field name="skc_count" />
+					<field name="skc_count" /> -->
 				</tree>
 			</field>
 		</record>
@@ -56,10 +55,9 @@
 			<field name="model">cy.product.spu</field>
 			<field name="arch" type="xml">
 				<search string="搜索选项">
-					<!-- Add your fields here -->
-					<field name="id" />
+					<!-- <field name="id" />
 					<field name="spu_sn" />
-					<field name="category_id" />
+					<field name="category_id" /> -->
 				</search>
 			</field>
 		</record>

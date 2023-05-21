@@ -7,8 +7,7 @@
 			<field name="model">cy.product.category</field>
 			<field name="arch" type="xml">
 				<search string="商品分类">
-					<!-- Add your fields here -->
-					<field name="full_name" string="名称" filter_domain="['|', ('full_name', 'ilike', self), ('full_name_en', 'ilike', self)]" />
+					<field name="full_name" string="名称" filter_domain="[('full_name', 'ilike', self)]" />
 					<searchpanel>
 						<field name="parent_id" color="#875A7B" enable_counters="1" />
 					</searchpanel>
@@ -25,7 +24,6 @@
 						<group>
 							<!-- Add your fields here -->
 							<field name="name" />
-							<field name="name_en" />
 							<field name="active" />
 							<field name="parent_id" />
 						</group>
@@ -33,7 +31,6 @@
 							<page string="子分类">
 								<field name="children">
 									<field name="full_name" />
-									<field name="full_name_en" />
 								</field>
 							</page>
 						</notebook>
@@ -56,10 +53,8 @@
 					<field name="sequence" widget="handle" />
 					<field name="id" />
 					<field name="name" />
-					<field name="name_en" />
 					<field name="active" />
 					<field name="full_name" />
-					<field name="full_name_en" />
 				</tree>
 			</field>
 		</record>

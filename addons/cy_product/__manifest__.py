@@ -7,18 +7,13 @@
     'maintainer': 'yinshuwei',
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
-    'depends': [
-            'cy_base', 'web', 'mail'
-    ],
+    'depends': ['cy_base', 'web', 'mail'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'view/product_spu.xml',
-        'view/product_skc.xml',
-        'view/search.xml',
-        'view/product_color.xml',
-        'view/product_size.xml',
         'view/product_sku.xml',
+        'view/search.xml',
         'view/category.xml',
         'view/menu.xml'
     ],
