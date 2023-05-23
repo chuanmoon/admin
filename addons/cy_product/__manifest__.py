@@ -14,8 +14,8 @@
         'view/category_variant.xml',
         'view/category_attr.xml',
         'view/category.xml',
-        'view/spu.xml',
         'view/sku.xml',
+        'view/spu.xml',
         'view/collection.xml',
         'view/search.xml',
         'view/menu.xml'
