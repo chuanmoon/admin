@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     'name': "CY Base",
+    'version': '1.0.0',
     'summary': 'chuanmoon base',
     'description': """ CY 公共组件 """,
-    'author': '尹术伟',
+    'author': 'chuanmoon',
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
     'depends': ['base', 'mail', 'web'],

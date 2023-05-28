@@ -1,6 +1,6 @@
 {
     'name': 'CY Product Source',
-    'version': '1.0',
+    'version': '1.0.0',
     'summary': '商品来源',
     'category': '商品',
     'author': 'chuanmoon',

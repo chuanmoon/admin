@@ -1,8 +1,9 @@
 {
     'name': "CY Comment",
+    'version': '1.0.0',
     'summary': 'chuanmoon comment',
     'description': """ CY 评价管理 """,
-    'author': 'yinshuwei',
+    'author': 'chuanmoon',
     'website': "https://chuanmoon.com/",
     'category': 'Website/Website',
     'depends': ['base', 'mail', 'web', 'cy_base', 'cy_product', 'cy_account'],

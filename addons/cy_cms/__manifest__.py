@@ -2,6 +2,7 @@
 
 {
     'name': 'CY Cms',
+    'version': '1.0.0',
     'version': '1.0',
     'summary': 'chuanmoon cms',
     'author': 'chuanmoon',

@@ -1,6 +1,6 @@
 {
     'name': 'CY Product',
-    'version': '1.0',
+    'version': '1.0.0',
     'summary': '商品管理',
     'category': '商品',
     'author': 'chuanmoon',
